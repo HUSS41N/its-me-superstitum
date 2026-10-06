@@ -1,5 +1,5 @@
 /* ── AI Hussain: floating chat agent ──
-   Streams Claude responses from /api/chat (server.js).
+   Streams Claude responses from /api/chat (api/chat.js on Vercel, dev-server.js locally).
    Injected entirely from JS so the page stays clean without it. */
 (function() {
     'use strict';

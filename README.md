@@ -2,7 +2,7 @@
 
 Personal portfolio of **Md Hussain**, Full Stack & AI Engineer working on agentic AI, voice AI and LLM orchestration.
 
-It's a hand-built site with no framework: one HTML page, plain CSS and vanilla JS, plus a small Node server for the "Ask my AI" chat.
+It's a hand-built site with no framework: one HTML page, plain CSS and vanilla JS, plus one serverless function for the "Ask my AI" chat.
 
 ## What's on it
 
@@ -36,17 +36,22 @@ Without a key, the chat shows a friendly error and points people to email instea
 | `style.css` | Base design: tokens, layout, cards, timeline |
 | `main.js` | Scroll reveal, the dot-field background, ⌘K menu, theme toggle, email sheet |
 | `agent.js` | The "Ask my AI" widget: streaming chat, read-aloud, page pointing |
-| `server.js` | Serves the site (with byte ranges, so video works in Safari) and `/api/chat`, which streams from Claude with what the AI knows about me in its system prompt |
+| `lib/chat.js` | The chat: what the AI knows about me (its system prompt) and the streaming call to Claude |
+| `api/` | Vercel functions: `chat.js` streams replies; `tts.js` and `lead.js` tell the widget to fall back to browser speech and email |
+| `dev-server.js` | Local server: serves the site (with byte ranges, so video works in Safari) and the same `/api/*` routes |
+| `vercel.json` | Tells Vercel this is a static site plus functions, not a Node app |
 | `images/` | Card media: screenshots, short looping clips and their posters |
 | `fonts/` | Self-hosted Inter, Instrument Serif and JetBrains Mono |
 
 ### Editing what the AI knows
 
-The chat only states facts from the profile in the `SYSTEM` prompt in `server.js`. When the page changes, update that profile too. If you add or rename a card's `data-focus` key, also update the `FOCUS` map in `agent.js` and the list of valid keys in the prompt.
+The chat only states facts from the profile in the `SYSTEM` prompt in `lib/chat.js`. When the page changes, update that profile too. If you add or rename a card's `data-focus` key, also update the `FOCUS` map in `agent.js` and the list of valid keys in the prompt.
 
 ## Deploying
 
-The static files can go on any host. The chat needs a server that can run `server.js` (or the same `/api/chat` handler as a serverless function) with `ANTHROPIC_API_KEY` set.
+**Vercel:** import the repo with no build settings; `vercel.json` handles it. Vercel serves the static files from its CDN and runs `api/` as functions. To turn on the chat, add `ANTHROPIC_API_KEY` under Project → Settings → Environment Variables, then redeploy.
+
+**Anywhere else:** the static files work on any host. The chat needs `api/chat.js`, or `dev-server.js`, running with `ANTHROPIC_API_KEY` set.
 
 ## Contact
 
