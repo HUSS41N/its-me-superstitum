@@ -1,0 +1,677 @@
+/* ── AI Hussain: floating chat agent ──
+   Streams Claude responses from /api/chat (server.js).
+   Injected entirely from JS so the page stays clean without it. */
+(function() {
+    'use strict';
+
+    var API = '/api/chat';
+    var TTS_API = '/api/tts';
+    var LEAD_API = '/api/lead';
+
+    // Bilingual copy. The agent itself mirrors whatever language it's asked
+    // in; these strings just localize the widget chrome + canned bits.
+    var COPY = {
+        en: {
+            greeting: "Hey - I'm AI Hussain, the AI twin of the real one. Ask me anything about his work, his projects, or whether he's the person you're looking for. I only know what's on his resume - for everything else there's hussainakhtar1111@gmail.com.",
+            starters: ['Would he fit my open role?', "What's the most impressive thing he's shipped?", 'What does he know about voice AI?'],
+            placeholder: 'Ask about Hussain or his work…',
+            sub: 'AI twin · can be wrong · ',
+            emailReal: 'email the real one',
+            error: 'AI Hussain glitched - try again, or email the real one: hussainakhtar1111@gmail.com.',
+            leadName: 'Your name',
+            leadEmail: 'Your email',
+            leadNote: 'Anything he should know? (optional)',
+            leadSend: 'Send to Hussain',
+            leadSent: 'Got it - passed straight to the real Hussain.',
+            leadError: "That didn't go through - try again or just email hussainakhtar1111@gmail.com."
+        }
+    };
+    // English only; the 'he' branches left in the widget read the same copy.
+    COPY.he = COPY.en;
+    var uiLang = 'en';
+
+    var history = [];   // {role, content} - excludes the canned greeting
+    var busy = false;
+
+    function track(path) {
+        if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: path, event: true });
+        }
+    }
+
+    /* ── Page-pointing: the agent emits [[focus:KEY]] markers; the
+       widget strips them from the text and scrolls + spotlights the
+       matching element so AI Hussain can give a guided tour. ── */
+    var FOCUS = {
+        work: '#work .section-title',
+        about: '#about .section-title',
+        skills: '#skills .section-title',
+        experience: '#experience .section-title',
+        contact: '#contact .contact-title',
+        echo: '[data-focus="echo"]',
+        'jivi-scale': '[data-focus="jivi-scale"]',
+        'health-coach': '[data-focus="health-coach"]',
+        'agent-studio': '[data-focus="agent-studio"]',
+        yeapp: '[data-focus="yeapp"]',
+        ludo: '[data-focus="ludo"]',
+        sudoviz: '[data-focus="sudoviz"]',
+        'heart-rate': '[data-focus="heart-rate"]',
+        pakkaprofile: '[data-focus="pakkaprofile"]',
+        agentsman: '[data-focus="agentsman"]',
+        'echo-voice': '[data-focus="echo-voice"]',
+        claucat: '[data-focus="claucat"]',
+        pulse: '[data-focus="pulse"]',
+        intake: '[data-focus="intake"]',
+        interviewing: '[data-focus="interviewing"]',
+        router: '[data-focus="router"]',
+        evals: '[data-focus="evals"]',
+        search: '[data-focus="search"]',
+        'design-skill': '[data-focus="design-skill"]',
+        memory: '[data-focus="memory"]',
+        'streaming-eval': '[data-focus="streaming-eval"]',
+        tph: '[data-focus="tph"]',
+        jivi: '[data-focus="jivi"]',
+        'sudoviz-role': '[data-focus="sudoviz-role"]',
+        pakka: '[data-focus="pakka"]',
+        'skills-ai': '[data-focus="skills-ai"]',
+        'skills-scale': '[data-focus="skills-scale"]',
+        'skills-voice': '[data-focus="skills-voice"]',
+        'skills-frontend': '[data-focus="skills-frontend"]',
+        'skills-backend': '[data-focus="skills-backend"]'
+    };
+    var focusReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function stripMarkers(s) {
+        // remove complete markers, any trailing partial mid-stream, and
+        // collapse the double space left where a marker was
+        return s.replace(/\[\[focus:[a-z0-9-]+\]\]/g, '')
+                .replace(/\[\[lead\]\]/g, '')
+                .replace(/\[\[[^\]]{0,40}\]\]/g, '')   // any other marker the model invents - never show it
+                .replace(/\[\[[^\]\]]*$/, '')
+                .replace(/[ \t]{2,}/g, ' ');
+    }
+
+    // Scroll + highlight a target. Only ever called while reading aloud,
+    // paced by the narration (see speakParts).
+    function spotlight(key) {
+        if (!FOCUS[key]) return;
+        var el = document.querySelector(FOCUS[key]);
+        if (!el) return;
+        el.scrollIntoView({ behavior: focusReduced ? 'auto' : 'smooth', block: 'center' });
+        el.classList.remove('agent-spotlight');
+        void el.offsetWidth;
+        el.classList.add('agent-spotlight');
+        track('agent-point');
+        setTimeout(function() { el.classList.remove('agent-spotlight'); }, 2900);
+    }
+
+    function cleanSeg(s) {
+        return s.replace(/\[\[lead\]\]/g, '').replace(/\[\[[^\]]{0,40}\]\]/g, '').replace(/\[\[[^\]\]]*$/, '').replace(/[ \t]{2,}/g, ' ').trim();
+    }
+    // Split a raw reply into {text, key} parts at each marker, so speech and
+    // page-pointing can be interleaved in narration order.
+    function parseFocusParts(raw) {
+        var parts = [], re = /\[\[focus:([a-z0-9-]+)\]\]/g, last = 0, m, hasKey = false;
+        while ((m = re.exec(raw))) {
+            var key = FOCUS[m[1]] ? m[1] : null;
+            parts.push({ text: cleanSeg(raw.slice(last, m.index)), key: key });
+            if (key) hasKey = true;
+            last = m.index + m[0].length;
+        }
+        parts.push({ text: cleanSeg(raw.slice(last)), key: null });
+        return { parts: parts, hasKey: hasKey };
+    }
+
+    /* ── DOM ── */
+    var launcher = document.createElement('button');
+    launcher.className = 'agent-launcher';
+    launcher.setAttribute('aria-label', 'Chat with AI Hussain');
+    launcher.innerHTML =
+        '<span class="agent-face" aria-hidden="true">' +
+            '<img src="images/dino-avatar.png?v=1" alt="" class="agent-face-img">' +
+            '<span class="agent-online"></span>' +
+        '</span>' +
+        '<span class="agent-launcher-label">Ask my AI</span>';
+
+    var panel = document.createElement('div');
+    panel.className = 'agent-panel';
+    panel.hidden = true;
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'Chat with AI Hussain');
+    panel.innerHTML =
+        '<div class="agent-head">' +
+            '<span class="agent-face agent-face-lg" aria-hidden="true">' +
+                '<span class="agent-svg-slot"><img src="images/dino-avatar.png?v=1" alt="" class="agent-face-img" id="agentAvatar"></span>' +
+                '<span class="agent-online"></span>' +
+            '</span>' +
+            '<div class="agent-head-text">' +
+                '<div class="agent-name">AI Hussain</div>' +
+                '<div class="agent-sub">' + COPY[uiLang].sub + '<a href="mailto:hussainakhtar1111@gmail.com">' + COPY[uiLang].emailReal + '</a></div>' +
+            '</div>' +
+            '<button class="agent-lang" type="button" hidden>' + (uiLang === 'he' ? 'EN' : 'עב') + '</button>' +
+            '<button class="agent-close" aria-label="Close chat">&times;</button>' +
+        '</div>' +
+        '<div class="agent-msgs" aria-live="polite"></div>' +
+        '<div class="agent-starters"></div>' +
+        '<form class="agent-form">' +
+            '<button class="agent-mic" type="button" aria-label="Speak your question" aria-pressed="false" hidden>' +
+                '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>' +
+            '</button>' +
+            '<input class="agent-input" type="text" maxlength="1200" placeholder="' + COPY[uiLang].placeholder + '" aria-label="Your question">' +
+            '<button class="agent-send" type="submit" aria-label="Send message">' +
+                '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>' +
+            '</button>' +
+        '</form>';
+
+    document.body.appendChild(launcher);
+    document.body.appendChild(panel);
+
+
+    var msgsEl = panel.querySelector('.agent-msgs');
+    var startersEl = panel.querySelector('.agent-starters');
+    var formEl = panel.querySelector('.agent-form');
+    var inputEl = panel.querySelector('.agent-input');
+    var sendEl = panel.querySelector('.agent-send');
+    var micEl = panel.querySelector('.agent-mic');
+    var subEl = panel.querySelector('.agent-sub');
+    var langBtn = panel.querySelector('.agent-lang');
+
+    // Re-localize the widget chrome and re-language the mic when toggled
+    function applyLang() {
+        inputEl.placeholder = COPY[uiLang].placeholder;
+        inputEl.dir = uiLang === 'he' ? 'rtl' : 'ltr';
+        subEl.innerHTML = COPY[uiLang].sub + '<a href="mailto:hussainakhtar1111@gmail.com">' + COPY[uiLang].emailReal + '</a>';
+        langBtn.textContent = uiLang === 'he' ? 'EN' : 'עב';
+        langBtn.setAttribute('aria-label', uiLang === 'he' ? 'Switch to English' : 'עבור לעברית / Switch to Hebrew');
+        renderStarters();
+    }
+    langBtn.addEventListener('click', function() {
+        uiLang = uiLang === 'he' ? 'en' : 'he';
+        applyLang();
+        inputEl.focus();
+    });
+
+    // Smart default: the mic + chrome follow the conversation language.
+    // Once any Hebrew appears (typed, spoken, or in a reply) the widget
+    // switches to Hebrew on its own; clear English switches it back.
+    function detectLang(text) {
+        if (/[A-Za-z]/.test(text)) return 'en';
+        return null; // numbers/emoji/punctuation only - leave as-is
+    }
+    function maybeSwitchLang(text) {
+        var d = detectLang(text);
+        if (d && d !== uiLang) { uiLang = d; applyLang(); }
+    }
+
+    function renderStarters() {
+        startersEl.replaceChildren();
+        COPY[uiLang].starters.forEach(function(q) {
+            var chip = document.createElement('button');
+            chip.className = 'agent-chip';
+            chip.type = 'button';
+            chip.dir = 'auto';
+            chip.textContent = q;
+            chip.addEventListener('click', function() { send(q); });
+            startersEl.appendChild(chip);
+        });
+    }
+
+    /* ── Text-to-speech: Azure Neural voice with browser fallback ── */
+    var tts = {
+        browserSupported: 'speechSynthesis' in window,
+        supported: ('speechSynthesis' in window) || ('Audio' in window),
+        activeBtn: null,
+        audio: null,
+        seq: 0,
+        unlocked: false,
+        unlock: function() {
+            // iOS allows audio only after a user-gesture
+            if (this.unlocked) return;
+            this.unlocked = true;
+            if (this.browserSupported) {
+                try { speechSynthesis.speak(new SpeechSynthesisUtterance('')); } catch (e) {}
+            }
+        },
+        markBtn: function(btn, on) {
+            var face = document.getElementById('agentAvatar');
+            if (face) face.classList.toggle('talking', on);
+            if (!btn) return;
+            btn.classList.toggle('speaking', on);
+            btn.setAttribute('aria-label', on ? 'Stop reading' : 'Read aloud');
+        },
+        stop: function() {
+            this.seq++; // invalidate any running sequence
+            if (this.audio) {
+                try { this.audio.pause(); } catch (e) {}
+                this.audio = null;
+            }
+            if (this.browserSupported) speechSynthesis.cancel();
+            this.markBtn(this.activeBtn, false);
+            this.activeBtn = null;
+        },
+        // Play one chunk of text; resolve when it finishes (or at once if empty/stale)
+        playText: function(text, token) {
+            var self = this;
+            return new Promise(function(resolve) {
+                if (!text || token !== self.seq) { resolve(); return; }
+                function browser() {
+                    if (!self.browserSupported) { resolve(); return; }
+                    var u = new SpeechSynthesisUtterance(text);
+                    var v = self.pickVoice(text); if (v) u.voice = v;
+                    u.rate = 1.04;
+                    u.onend = u.onerror = function() { resolve(); };
+                    speechSynthesis.speak(u);
+                }
+                fetch(TTS_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text })
+                }).then(function(res) {
+                    var ct = res.headers.get('Content-Type') || '';
+                    if (res.ok && ct.indexOf('audio') === 0) return res.blob();
+                    throw new Error('fallback');
+                }).then(function(blob) {
+                    if (token !== self.seq) { resolve(); return; }
+                    var url = URL.createObjectURL(blob);
+                    var a = new Audio(url);
+                    self.audio = a;
+                    a.onended = a.onerror = function() { URL.revokeObjectURL(url); if (self.audio === a) self.audio = null; resolve(); };
+                    a.play().catch(function() { browser(); });
+                }).catch(function() { browser(); });
+            });
+        },
+        // Speak a sequence of {text, key} parts, firing onKey(key) AFTER each
+        // part finishes - so page scroll/highlight syncs to the narration.
+        speakParts: function(parts, btn, onKey) {
+            if (this.activeBtn === btn) { this.stop(); return; }
+            this.stop();
+            this.activeBtn = btn || null;
+            this.markBtn(btn, true);
+            var token = ++this.seq;
+            var self = this;
+            var i = 0;
+            (function next() {
+                if (token !== self.seq) return;
+                if (i >= parts.length) {
+                    self.markBtn(btn, false);
+                    if (self.activeBtn === btn) self.activeBtn = null;
+                    return;
+                }
+                var part = parts[i++];
+                self.playText(part.text, token).then(function() {
+                    if (token !== self.seq) return;
+                    if (part.key && onKey) onKey(part.key);
+                    next();
+                });
+            })();
+        },
+        speak: function(text, btn) {
+            if (!text) return;
+            this.speakParts([{ text: text, key: null }], btn, null);
+        },
+        browserSpeak: function(text, btn) {
+            if (!this.browserSupported) { this.markBtn(btn, false); if (this.activeBtn === btn) this.activeBtn = null; return; }
+            if (this.activeBtn !== btn) return;
+            var u = new SpeechSynthesisUtterance(text);
+            var voice = this.pickVoice(text);
+            if (voice) u.voice = voice;
+            u.rate = 1.04;
+            var self = this;
+            u.onend = u.onerror = function() {
+                if (self.activeBtn === btn) { self.markBtn(btn, false); self.activeBtn = null; }
+            };
+            speechSynthesis.speak(u);
+        },
+        pickVoice: function(text) {
+            var voices = speechSynthesis.getVoices();
+            var hebrew = /[֐-׿]/.test(text);
+            var lang = hebrew ? 'he' : 'en';
+            var preferred = hebrew ? ['Carmit'] : ['Samantha', 'Google US English', 'Daniel', 'Alex'];
+            for (var i = 0; i < preferred.length; i++) {
+                var v = voices.find(function(x) { return x.name.indexOf(preferred[i]) === 0; });
+                if (v) return v;
+            }
+            return voices.find(function(x) { return x.lang.indexOf(lang) === 0; }) || null;
+        }
+    };
+    if (tts.browserSupported) speechSynthesis.getVoices(); // warm voice list
+
+    function attachSpeaker(msgEl, raw) {
+        if (!tts.supported) return null;
+        var btn = document.createElement('button');
+        btn.className = 'agent-speak';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Read aloud');
+        btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
+        btn.addEventListener('click', function() {
+            tts.unlock();
+            var pp = parseFocusParts(raw != null ? raw : msgEl.textContent);
+            if (pp.hasKey) tts.speakParts(pp.parts, btn, spotlight);
+            else tts.speak(msgEl.textContent, btn);
+        });
+        var row = document.createElement('div');
+        row.className = 'agent-msg-tools';
+        row.appendChild(btn);
+        msgEl.insertAdjacentElement('afterend', row);
+        return btn;
+    }
+
+    /* ── Lead capture: the agent emits [[lead]] and this inline form
+       appears; details go straight to the real Hussain. ── */
+    function showLeadForm() {
+        if (msgsEl.querySelector('.agent-lead')) return; // one at a time
+        var c = COPY[uiLang];
+        var form = document.createElement('form');
+        form.className = 'agent-lead';
+        form.dir = uiLang === 'he' ? 'rtl' : 'ltr';
+        form.innerHTML =
+            '<input type="text" name="name" maxlength="120" placeholder="' + c.leadName + '" required>' +
+            '<input type="email" name="email" maxlength="200" placeholder="' + c.leadEmail + '" required>' +
+            '<input type="text" name="note" maxlength="600" placeholder="' + c.leadNote + '">' +
+            '<button type="submit" class="agent-lead-send">' + c.leadSend + '</button>';
+        msgsEl.appendChild(form);
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+        track('lead-shown');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = form.querySelector('.agent-lead-send');
+            btn.disabled = true;
+            fetch(LEAD_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: form.name.value.trim(),
+                    email: form.email.value.trim(),
+                    note: form.note.value.trim()
+                })
+            }).then(function(res) {
+                if (res.ok) {
+                    form.remove();
+                    addMsg('ai', c.leadSent);
+                    track('lead-sent');
+                    return;
+                }
+                return res.json().catch(function() { return {}; }).then(function(d) {
+                    if (d.fallback) {
+                        // channel not configured - no dead end: open the email sheet
+                        form.remove();
+                        var mailBtn = document.querySelector('a[href^="mailto:"]');
+                        if (mailBtn) mailBtn.click();
+                    } else {
+                        btn.disabled = false;
+                        addMsg('ai', d.error || c.leadError);
+                    }
+                });
+            }).catch(function() {
+                btn.disabled = false;
+                addMsg('ai', c.leadError);
+            });
+        });
+        form.querySelector('input').focus();
+    }
+
+    /* ── Speech-to-text: talk to the agent ── */
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var recognition = null;
+    var listening = false;
+    var voiceMode = false; // last question was spoken -> speak the answer
+
+    if (SR && micEl) {
+        micEl.hidden = false;
+        micEl.addEventListener('click', function() {
+            tts.unlock();
+            if (listening) { stopListening(); return; }
+            tts.stop();
+            try {
+                recognition = new SR();
+            } catch (e) { micEl.hidden = true; return; }
+            recognition.lang = uiLang === 'he' ? 'he-IL' : 'en-US';
+            recognition.interimResults = true;
+            recognition.maxAlternatives = 1;
+
+            recognition.onresult = function(e) {
+                var interim = '', final = '';
+                for (var i = e.resultIndex; i < e.results.length; i++) {
+                    if (e.results[i].isFinal) final += e.results[i][0].transcript;
+                    else interim += e.results[i][0].transcript;
+                }
+                if (interim) inputEl.value = interim;
+                if (final) {
+                    inputEl.value = '';
+                    stopListening();
+                    send(final.trim(), true);
+                }
+            };
+            recognition.onerror = function() { stopListening(); };
+            recognition.onend = function() { stopListening(); };
+
+            listening = true;
+            micEl.classList.add('listening');
+            micEl.setAttribute('aria-pressed', 'true');
+            inputEl.placeholder = uiLang === 'he' ? '…מקשיב' : 'Listening…';
+            try { recognition.start(); } catch (e) { stopListening(); }
+            track('agent-voice');
+        });
+    }
+
+    function stopListening() {
+        listening = false;
+        micEl.classList.remove('listening');
+        micEl.setAttribute('aria-pressed', 'false');
+        inputEl.placeholder = COPY[uiLang].placeholder;
+        if (recognition) {
+            try { recognition.stop(); } catch (e) {}
+        }
+    }
+
+    applyLang();   // localize chrome + render starters in the current language
+
+    // The facts file is full of bare hostnames (github.com/HUSS41N),
+    // so matching only http:// would miss almost every link the agent hands out. Emails are
+    // matched first - an address contains a host and would otherwise be linked as a website.
+    var LINK_RE = /([a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,})|((?:https?:\/\/)?(?:[a-z0-9-]+\.)+(?:co\.il|org\.il|com|net|org|io|ai|app|dev|cloud|co|me)(?:[\/?#][^\s<>"']*)?)/gi;
+    function linkifyInto(el, text) {
+        text = String(text == null ? '' : text);
+        el.textContent = '';
+        var last = 0;
+        text.replace(LINK_RE, function (m, mail, url, i) {
+            var hit = m, tail = '';
+            var trim = hit.match(/[.,;:!?)\]]+$/);
+            if (trim) { tail = trim[0]; hit = hit.slice(0, -tail.length); }
+            // Hebrew glues prefixes on with a hyphen - "ל-name@example.com".
+            // Without this the hyphen is swallowed into the address and the link is dead.
+            var lead = hit.match(/^[-.,;:!?(\[]+/);
+            if (lead) { i += lead[0].length; m = m.slice(lead[0].length); hit = hit.slice(lead[0].length); }
+            if (!/[a-z0-9]/i.test(hit)) return m;
+            if (!hit) return m;
+            if (i > last) el.appendChild(document.createTextNode(text.slice(last, i)));
+            var a = document.createElement('a');
+            a.textContent = hit;
+            if (mail) { a.href = 'mailto:' + hit; }
+            else { a.href = /^https?:\/\//i.test(hit) ? hit : 'https://' + hit; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+            el.appendChild(a);
+            if (tail) el.appendChild(document.createTextNode(tail));
+            last = i + m.length;
+            return m;
+        });
+        if (last < text.length) el.appendChild(document.createTextNode(text.slice(last)));
+    }
+    function addMsg(role, text) {
+        var el = document.createElement('div');
+        el.className = 'agent-msg ' + (role === 'user' ? 'from-user' : 'from-ai');
+        el.dir = 'auto';   // Hebrew renders RTL, English LTR - per message
+        linkifyInto(el, text);
+        msgsEl.appendChild(el);
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+        return el;
+    }
+
+    function setBusy(b) {
+        busy = b;
+        sendEl.disabled = b;
+        inputEl.disabled = b;
+        var face = document.getElementById('agentAvatar');
+        if (face) face.classList.toggle('thinking', b);
+    }
+
+    var opened = false;
+    function openPanel() {
+        panel.hidden = false;
+        launcher.classList.add('panel-open');
+        // launcher is visually hidden behind the panel - keep it out of the
+        // tab order and the a11y tree while it is
+        launcher.setAttribute('tabindex', '-1');
+        launcher.setAttribute('aria-hidden', 'true');
+        if (!opened) {
+            opened = true;
+            var g = addMsg('ai', COPY[uiLang].greeting);
+            attachSpeaker(g, COPY[uiLang].greeting);
+            track('agent-open');
+        }
+        inputEl.focus();
+    }
+    function closePanel() {
+        panel.hidden = true;
+        launcher.classList.remove('panel-open');
+        launcher.removeAttribute('tabindex');
+        launcher.removeAttribute('aria-hidden');
+        launcher.focus();
+    }
+
+    launcher.addEventListener('click', function() {
+        if (panel.hidden) openPanel(); else closePanel();
+    });
+    panel.querySelector('.agent-close').addEventListener('click', closePanel);
+    // "Ask my AI" button on the meta project card opens the chat
+    document.querySelectorAll('.mini-ask-ai').forEach(function(b) {
+        b.addEventListener('click', openPanel);
+    });
+
+    /* ── Attention nudges: while the chat has never been opened, the
+       launcher plays a random playful animation every few seconds so
+       it pulls the eye. Stops once engaged; respects reduced-motion,
+       hover, and hidden tabs. ── */
+    (function() {
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) return;
+        var NUDGES = ['nudge-bounce', 'nudge-wiggle', 'nudge-pop', 'nudge-swing'];
+        var clearTimer;
+        function clearNudge() {
+            launcher.classList.remove('nudging');
+            NUDGES.forEach(function(n) { launcher.classList.remove(n); });
+        }
+        launcher.addEventListener('mouseenter', clearNudge);
+        function fire() {
+            if (opened || !panel.hidden || document.hidden || launcher.matches(':hover')) return;
+            clearNudge();
+            void launcher.offsetWidth; // restart any in-flight animation
+            launcher.classList.add('nudging', NUDGES[(Math.random() * NUDGES.length) | 0]);
+            clearTimeout(clearTimer);
+            clearTimer = setTimeout(clearNudge, 1100);
+        }
+        function schedule(first) {
+            var delay = first ? 3000 : (3500 + Math.random() * 3500);
+            setTimeout(function() {
+                fire();
+                if (!opened) schedule(false);
+            }, delay);
+        }
+        schedule(true);
+    })();
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !panel.hidden) closePanel();
+    });
+
+    formEl.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var q = inputEl.value.trim();
+        if (q) send(q);
+    });
+
+    function send(text, spoken) {
+        if (busy) return;
+        voiceMode = !!spoken;
+        maybeSwitchLang(text);   // adapt the widget + mic to this message's language
+        startersEl.style.display = 'none';
+        inputEl.value = '';
+        addMsg('user', text);
+        history.push({ role: 'user', content: text });
+        // Keep the conversation inside server limits
+        while (history.length > 20) history.shift();
+        if (history[0] && history[0].role !== 'user') history.shift();
+
+        var aiEl = addMsg('ai', '');
+        aiEl.classList.add('thinking');
+        aiEl.textContent = '· · ·';
+        setBusy(true);
+        track('agent-message');
+
+        fetch(API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: history })
+        }).then(function(res) {
+            if (!res.ok) {
+                return res.json().catch(function() { return {}; }).then(function(data) {
+                    throw new Error(data.error || COPY[uiLang].error);
+                });
+            }
+            aiEl.classList.remove('thinking');
+            aiEl.textContent = '';
+            var reader = res.body.getReader();
+            var decoder = new TextDecoder();
+            var buf = '';
+            var answer = '';
+
+            function pump() {
+                return reader.read().then(function(step) {
+                    if (step.done) return;
+                    buf += decoder.decode(step.value, { stream: true });
+                    var lines = buf.split('\n');
+                    buf = lines.pop();
+                    lines.forEach(function(line) {
+                        if (line.indexOf('data: ') !== 0) return;
+                        var payload = line.slice(6);
+                        try {
+                            var evt = JSON.parse(payload);
+                            if (evt.type === 'content_block_delta' && evt.delta && evt.delta.text) {
+                                answer += evt.delta.text;
+                                // Pointing happens only while reading aloud (synced to
+                                // the voice). Typed replies just show clean text.
+                                aiEl.textContent = stripMarkers(answer);
+                                msgsEl.scrollTop = msgsEl.scrollHeight;
+                            }
+                        } catch (err) {}
+                    });
+                    return pump();
+                });
+            }
+            return pump().then(function() {
+                if (answer) {
+                    var clean = stripMarkers(answer);
+                    linkifyInto(aiEl, clean);
+                    maybeSwitchLang(clean);   // confirm the conversation language from the reply
+                    history.push({ role: 'assistant', content: clean });
+                    if (/\[\[lead\]\]/.test(answer)) showLeadForm();
+                    var speakBtn = attachSpeaker(aiEl, answer);
+                    if (voiceMode && speakBtn) {
+                        var pp = parseFocusParts(answer);
+                        if (pp.hasKey) tts.speakParts(pp.parts, speakBtn, spotlight);
+                        else tts.speak(clean, speakBtn);
+                    }
+                } else {
+                    aiEl.textContent = COPY[uiLang].error;
+                    history.pop();
+                }
+            });
+        }).catch(function(err) {
+            aiEl.classList.remove('thinking');
+            aiEl.textContent = err.message;
+            history.pop();
+        }).finally(function() {
+            setBusy(false);
+            inputEl.focus();
+        });
+    }
+})();

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0d" id="themeColorMeta">
+    <script>(function(){try{var t=localStorage.getItem('theme');var light=t?(t==='light'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches);if(light){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeColorMeta').setAttribute('content','#faf9f7');}}catch(e){}})();</script>
+    <title>Md Hussain | Agentic AI &amp; Full Stack Engineer</title>
+    <meta name="description" content="Md Hussain - Full Stack and AI Engineer building agentic AI, voice AI, LLM orchestration and workflow systems that run at scale.">
+    <meta name="author" content="Md Hussain">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Md Hussain, agentic AI, AI engineer, voice AI, LLM orchestration, multi-agent systems, AI workflows, full stack engineer, Echo, Agentsman">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Md Hussain | Agentic AI &amp; Full Stack Engineer">
+    <meta property="og:description" content="Agentic AI, voice AI, LLM orchestration and workflows, built to run at scale.">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Md Hussain | Agentic AI &amp; Full Stack Engineer">
+    <meta name="twitter:description" content="Agentic AI, voice AI, LLM orchestration and workflows, built to run at scale.">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Md Hussain",
+        "givenName": "Hussain",
+        "jobTitle": "Full Stack & AI Engineer",
+        "description": "Full Stack and AI Engineer building agentic AI, voice AI, LLM orchestration and workflow systems that run at scale.",
+        "email": "hussainakhtar1111@gmail.com",
+        "worksFor": { "@type": "Organization", "name": "The Product Highway" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Jamia Hamdard" },
+        "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+        "knowsAbout": ["Agentic AI", "Multi-Agent Systems", "Voice AI", "LLM Orchestration", "AI Workflows", "LLM Evaluation", "Model Routing", "RAG", "React", "Next.js", "TypeScript", "Python", "FastAPI", "Node.js", "AWS", "Kubernetes"],
+        "sameAs": [
+            "https://github.com/HUSS41N",
+            "https://linkedin.com/in/md-hussain-baa178136"
+        ]
+    }
+    </script>
+    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/instrument-serif-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/jetbrains-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/fonts/fonts.css?v=1">
+    <link rel="stylesheet" href="style.css?v=52">
+    <style>
+    /* Cases without screenshots: the media slot carries the headline number instead. */
+    .case-art { display:flex; flex-direction:column; padding:36px;
+        background: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c, #8a7bff) 22%, transparent), transparent 60%), var(--bg-elev); }
+    .case-art-num { font-family:"Instrument Serif", Georgia, serif; font-style:italic; font-size:clamp(48px, 7vw, 88px); line-height:1; color:var(--c, #8a7bff); }
+    .case-art-label { margin-top:12px; font-family:"JetBrains Mono", ui-monospace, monospace; font-size:13px; letter-spacing:.04em; color:var(--ink-muted); text-transform:uppercase; }
+    .case-art-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:auto; padding-bottom:20px; }
+    .case-art-num.word { font-size:clamp(40px, 4.6vw, 64px); white-space:nowrap; }
+    .case-art-tags span { font-family:"JetBrains Mono", ui-monospace, monospace; font-size:11px; padding:5px 10px; border-radius:999px; border:1px solid var(--line); color:var(--ink-muted); }
+    @media (max-width: 640px) { .case-art { padding:24px; } }
+
+    /* YEAPP: real Play Store screenshots on the app's own purple. */
+    .case-media.phones { display:flex; align-items:center; justify-content:center; gap:4%;
+        background: radial-gradient(90% 80% at 50% 0%, #8a63ff, #5a2fe6 70%); border-color: transparent; }
+    .case-media.phones img { position:static; inset:auto; width:auto; height:88%; object-fit:contain; border-radius:14px;
+        box-shadow:0 18px 40px rgba(20,0,60,.35); transform:none !important; }
+    .case-media.phones img:nth-child(2) { margin-top:8%; }
+    .case-media.phones .phones-icon { position:absolute; left:20px; top:20px; height:44px; width:44px; margin:0; border-radius:12px; box-shadow:none; }
+    .case-media.phones.ludo { background: radial-gradient(90% 80% at 50% 0%, #3d7bff, #23127a 75%); }
+    .case-media.phones.peach { background: radial-gradient(90% 80% at 50% 0%, #ffd6b8, #f08a3c 85%); }
+    .case-media.phones video { position:static; opacity:1; width:auto; height:90%; aspect-ratio:896/1920; object-fit:cover; border-radius:18px;
+        border:4px solid #1b1b1f; box-shadow:0 18px 40px rgba(80,30,0,.35); transform:none !important; }
+    /* Jivi's Dr. Jivi clip is two phones on white; show it whole. */
+    .case-media.clip.white { background:#fff; }
+    .case-media.clip video { opacity:1; object-fit:contain; transform:none !important; }
+    /* Echo: two real screens of the product, stacked like windows on its orange. */
+    .case-media.screens { background: radial-gradient(100% 90% at 0% 0%, #ff8a3d, #c2410c 70%); border-color:transparent; }
+    .case-media.screens img { inset:auto; height:auto; width:72%; border-radius:10px; box-shadow:0 20px 50px rgba(40,10,0,.45); transform:none !important; object-fit:contain; }
+    .case-media.screens img:nth-child(1) { top:7%; left:5%; }
+    .case-media.screens img:nth-child(2) { bottom:-14%; right:5%; }
+
+    .case-media.screens.agentsman { background: linear-gradient(135deg, #7b5cc4, #6fb3e0); }
+    .case-media.screens.sudoviz { background: linear-gradient(135deg, #e6dccd, #c96a45); }
+    .case-media.screens.single img { width:88%; top:9%; left:6%; }
+
+    /* Scannable copy: a one-line summary, then short points. */
+    .case-line { margin-bottom: 14px; color: var(--ink); opacity: .86; font-size: 16.5px; line-height: 1.6; }
+    .case-points, .tl-points { list-style:none; margin:0 0 22px; padding:0; display:grid; gap:8px; }
+    .case-points li, .tl-points li { position:relative; padding-left:20px; color:var(--ink-muted); font-size:15px; line-height:1.55; }
+    .case-points li::before, .tl-points li::before { content:''; position:absolute; left:2px; top:.62em; width:7px; height:7px; border-radius:2px; background:var(--c, #8a7bff); opacity:.85; }
+    .tl-points { margin:10px 0 0; gap:6px; }
+    .timeline-about { margin:6px 0 0; font-size:14.5px; line-height:1.5; color:var(--ink); opacity:.78; max-width:640px; }
+    .tl-points li { font-size:14.5px; }
+    .tl-points li::before { background:#8a7bff; }
+    button.link-pill { border:0; cursor:pointer; font-family:inherit; }
+
+    /* Heart-rate: a clean readout window, like a screen from the app. */
+    .case-media.pulse-art { display:grid; place-items:center; background: radial-gradient(100% 90% at 0% 0%, #ff8fa3, #c9184a 75%); border-color:transparent; }
+    .hr-window { width:72%; max-height:86%; padding:clamp(14px,1.8vw,22px) clamp(16px,2vw,26px); border-radius:16px; background:#fff; color:#1d1d22; box-shadow:0 22px 50px rgba(90,0,30,.35); display:grid; gap:clamp(6px,.8vw,10px); }
+    .hr-head { display:flex; align-items:center; gap:8px; font:600 12px/1 Inter, system-ui, sans-serif; color:#6b6b76; letter-spacing:.01em; }
+    .hr-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.18); }
+    .hr-main { display:flex; align-items:baseline; gap:10px; }
+    .hr-heart { color:#e5384f; font-size:clamp(20px,2.2vw,30px); line-height:1; display:inline-block; animation: beat .83s ease-in-out infinite; }
+    .hr-bpm { font:600 clamp(36px,4.2vw,58px)/.95 Inter, system-ui, sans-serif; letter-spacing:-.03em; font-variant-numeric: tabular-nums; }
+    .hr-unit { font:600 13px/1 Inter, system-ui, sans-serif; color:#8a8a94; }
+    .hr-wave { width:100%; height:clamp(30px,3.4vw,46px); overflow:visible; }
+    .hr-wave path { fill:none; stroke:#e5384f; stroke-width:2.4; stroke-linejoin:round; stroke-linecap:round; stroke-dasharray:520; stroke-dashoffset:520; animation: trace 2.5s linear infinite; }
+    .hr-compare { display:flex; flex-wrap:nowrap; gap:6px; }
+    .hr-chip { font:500 12px/1 Inter, system-ui, sans-serif; color:#55555f; background:#f3f3f6; border-radius:999px; padding:7px 10px; white-space:nowrap; }
+    .hr-chip b { color:#1d1d22; font-weight:700; font-variant-numeric: tabular-nums; }
+    .hr-chip.ok { background:#e8f8ee; color:#15803d; font-weight:600; }
+    @keyframes beat { 0%,100% { transform:scale(1); } 15% { transform:scale(1.2); } 30% { transform:scale(1); } 45% { transform:scale(1.1); } }
+    @keyframes trace { to { stroke-dashoffset:0; } }
+    @media (prefers-reduced-motion: reduce) { .hr-heart, .hr-wave path { animation:none; } .hr-wave path { stroke-dashoffset:0; } }
+    @media (max-width:640px) { .hr-window { width:88%; } .hr-chip { font-size:10.5px; padding:6px 7px; } }
+    /* PakkaProfile: the 3D game and the video analysis as two windows, like Echo's.
+       The clips are 638px wide, so they're shown near that size to stay sharp. */
+    .case-media.pakka { background: radial-gradient(100% 90% at 0% 0%, #2a4f8f, #13284d 65%); border-color:transparent; }
+    .case-media.pakka::before { content:''; position:absolute; right:-8%; top:-14%; width:46%; aspect-ratio:1; border-radius:50%; background:#f9c74f; opacity:.9; }
+    .case-media.pakka video { opacity:1; transform:none !important; width:68%; height:auto; aspect-ratio:638/410; object-fit:cover;
+        border-radius:10px; box-shadow:0 20px 50px rgba(5,10,30,.5); }
+    .case-media.pakka .pakka-game { inset:auto; top:8%; left:5%; }
+    .case-media.pakka .pakka-pip { inset:auto; bottom:7%; right:5%; width:52%; border:3px solid #fff; }
+    .video-modal { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; padding:16px; background:rgba(5,5,8,.82); backdrop-filter:blur(6px); }
+    .video-modal[hidden] { display:none; }
+    .video-modal-inner { position:relative; display:flex; flex-direction:column; align-items:center; gap:10px; max-height:100%; }
+    .video-modal video { max-height:calc(100dvh - 90px); max-width:min(92vw, 520px); width:auto; border-radius:16px; background:#000; }
+    .video-modal iframe { width:min(92vw, 960px); aspect-ratio:16/9; height:auto; max-height:calc(100dvh - 90px); border:0; border-radius:16px; background:#000; }
+    .video-modal-title { color:#eee; font:500 14px/1.2 Inter, system-ui, sans-serif; }
+    .video-modal-close { position:absolute; top:-6px; right:-52px; width:40px; height:40px; border-radius:50%; border:0; cursor:pointer; font-size:22px; line-height:1;
+        background:rgba(255,255,255,.12); color:#fff; }
+    .video-modal-close:hover { background:rgba(255,255,255,.22); }
+    @media (max-width:640px) { .video-modal-close { right:4px; top:-48px; } .video-modal-inner { margin-top:48px; } }
+
+    /* ClauCat: the 12x12 glyph-matrix cat from the repo, lit LED by LED. */
+    .glyph-stage { display:grid; place-items:center; background:#0b0b0d; }
+    .glyph { width:38%; aspect-ratio:1; border-radius:50%; background:#000; box-shadow:0 0 0 2px #1d1d22; transition: box-shadow .3s; }
+    .glyph canvas { display:block; width:100%; height:100%; }
+    .mini:hover .glyph { box-shadow:0 0 0 2px color-mix(in srgb, var(--c, #fff) 55%, #1d1d22), 0 0 28px color-mix(in srgb, var(--c, #fff) 25%, transparent); }
+    .mini-links a.link-out { color: var(--ink-muted); }
+    </style>
+</head>
+<body>
+
+<a class="skip" href="#work">Skip to work</a>
+
+<canvas id="dotfield" aria-hidden="true"></canvas>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<nav id="nav">
+    <div class="container">
+        <a href="#" class="nav-logo">MD HUSSAIN<span>.</span></a>
+        <div class="nav-right">
+            <div class="nav-links" id="navLinks">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+            </div>
+            <a href="mailto:hussainakhtar1111@gmail.com?subject=Hello%20Hussain" class="nav-cta">Contact</a>
+            <button class="cmdk-hint" id="cmdkHint" aria-label="Open command menu" title="Command menu"><kbd>⌘</kbd>K</button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme" aria-pressed="false">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-label">Agentic AI <span class="dot">·</span> Voice AI <span class="dot">·</span> LLM Orchestration <span class="dot">·</span> <span class="loc">India</span></p>
+            <h1>I build agentic AI systems that run <em>at scale</em><span class="accent-dot">.</span><span class="hero-wavy-wrap" aria-hidden="true"><svg width="92" height="34" viewBox="0 0 120 40" fill="none"><path id="heroWaveThick" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGradThick)" stroke-width="7" stroke-linecap="round" fill="none"/><path id="heroWaveThin" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGrad)" stroke-width="3" stroke-linecap="round" fill="none"/><g id="heroWavePen" opacity="0"><g transform="scale(2) translate(-7,-14.3) rotate(-30,8,8)"><path d="M12 3l1.2-1.2a1.5 1.5 0 012.1 2.1L7.5 11.7a3 3 0 01-1.3.8L4 13l.5-2.2a3 3 0 01.8-1.3L12 3z" stroke="url(#heroWaveGrad)" stroke-width="0.8" stroke-linecap="round" fill="none"/></g></g><defs><linearGradient id="heroWaveGrad" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff"/><stop offset="50%" stop-color="#c4b9ff"/><stop offset="100%" stop-color="#8a7bff"/></linearGradient><linearGradient id="heroWaveGradThick" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff" stop-opacity="0"/><stop offset="50%" stop-color="#b9afff" stop-opacity="0.45"/><stop offset="100%" stop-color="#8a7bff" stop-opacity="0.85"/></linearGradient></defs></svg></span></h1>
+            <p class="hero-desc">Full Stack &amp; AI Engineer. I build multi-agent systems, voice AI and LLM workflows, and take them from architecture to production: fast, reliable and affordable.</p>
+            <div class="hero-links">
+                <a href="mailto:hussainakhtar1111@gmail.com?subject=Hello%20Hussain" class="btn btn-primary">Email me</a>
+                <a href="Md-Hussain-Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Resume
+                </a>
+                <span class="hero-minor">or find me on <a href="https://github.com/HUSS41N" target="_blank" rel="noopener">GitHub</a> / <a href="https://linkedin.com/in/md-hussain-baa178136" target="_blank" rel="noopener">LinkedIn</a></span>
+            </div>
+            <p class="hero-proof">80–120K people talk to Dr. Jivi daily <span class="dot">·</span> 200+ agents in production <span class="dot">·</span> 440+ models orchestrated in Echo</p>
+            <p class="hero-now"><span class="now-tag">Now</span>building <a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a> at The Product Highway <span class="dot">·</span> my own AI SaaS, <a href="https://agentsman.vercel.app/" target="_blank" rel="noopener">Agentsman</a></p>
+        </div>
+    </div>
+    <a href="#work" class="scroll-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        <span>Selected work</span>
+    </a>
+</header>
+
+<main>
+
+<!-- FEATURED WORK -->
+<section id="work">
+    <div class="container">
+        <div class="reveal">
+            <p class="section-label"><span class="idx">01</span> Selected work</p>
+            <h2 class="section-title">Things I've built.</h2>
+        </div>
+
+        <article class="case reveal c-amber" data-focus="echo">
+            <a href="https://echo.tphinfra.com" target="_blank" rel="noopener" class="case-media screens" aria-label="Echo - open the platform">
+                <img src="images/echo/voiceflow-pipeline.jpg" alt="Echo VoiceFlow OS: a live voice pipeline from mic to voice detection, speech recognition, LLM and text to speech" loading="lazy" decoding="async">
+                <img src="images/echo/voiceflow-graph.jpg" alt="Echo VoiceFlow OS: a seven-node conversation flow the agent moves through mid-call" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Agentic &amp; voice AI platform · The Product Highway</p>
+                <h3 class="case-title"><a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a></h3>
+                <p class="case-line">One platform to build, test and run AI agents, voice agents and workflows on any model.</p>
+                <ul class="case-points">
+                    <li>440+ models from 88+ vendors, routed by speed and cost</li>
+                    <li>Conversation flows where the agent switches steps live, mid-call</li>
+                    <li>Our streaming and chunking show words in ~1s and never bill silence</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">₹0.7–1.3</span><span class="case-stat-label">per voice minute for a client, down from ₹4–5</span></p>
+                <div class="case-links">
+                    <a href="https://echo.tphinfra.com" target="_blank" rel="noopener" class="link-pill">Open Echo →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case flip reveal c-coral" data-focus="jivi-scale">
+            <a href="https://jivi.ai" target="_blank" rel="noopener" class="case-media clip white" aria-label="Jivi AI - talk to Dr. Jivi">
+                <video src="images/jivi/dr-jivi.mp4" poster="images/jivi/dr-jivi-poster.jpg" autoplay muted loop playsinline aria-label="The Jivi app: tapping Talk to Dr. Jivi opens a live voice consult with the AI doctor"></video>
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">AI doctor · Jivi AI</p>
+                <h3 class="case-title"><a href="https://jivi.ai" target="_blank" rel="noopener">Dr. Jivi</a></h3>
+                <p class="case-line">Tap "Talk to Dr. Jivi" and you're in a live voice consult with an AI doctor.</p>
+                <ul class="case-points">
+                    <li>I built the end-to-end AI systems behind it</li>
+                    <li>Symptom questions, triage and advice in one conversation</li>
+                    <li>Inside an app with 3.8M downloads</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">80–120K</span><span class="case-stat-label">people talk to Dr. Jivi every day</span></p>
+                <div class="case-links">
+                    <a href="https://jivi.ai" target="_blank" rel="noopener" class="link-pill">Visit Jivi →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case reveal c-amber" data-focus="health-coach">
+            <div class="case-media phones peach">
+                <video src="images/jivi/health-coach.mp4" poster="images/jivi/health-coach-poster.jpg" autoplay muted loop playsinline aria-label="Jivi Health Coach: asking for a health overview, activity cards, and a blood report being analysed"></video>
+            </div>
+            <div class="case-body">
+                <p class="case-kicker">AI health coach · Jivi AI</p>
+                <h3 class="case-title">Jivi Health Coach</h3>
+                <p class="case-line">A coach you can talk to about your own health data.</p>
+                <ul class="case-points">
+                    <li>Turns steps, calories and activity into clear cards</li>
+                    <li>Reads blood test reports and explains the results</li>
+                    <li>Voice or text, with memory across the conversation</li>
+                </ul>
+                <div class="case-links">
+                    <button type="button" class="link-pill play-cta" data-video="images/jivi/health-coach-full.mp4" data-poster="images/jivi/health-coach-poster.jpg" data-title="Jivi Health Coach">Play video ▶</button>
+                    <a href="https://jivi.ai" target="_blank" rel="noopener" class="link-plain">Visit Jivi →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case flip reveal c-teal" data-focus="agent-studio">
+            <a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener" class="case-media screens agentsman" aria-label="Jivi's AI agents">
+                <img src="images/agentsman/home.jpg" alt="Agent workflow builder: build AI workflows without code" loading="lazy" decoding="async">
+                <img src="images/agentsman/features.jpg" alt="Visual workflow designer, AI agent orchestration and real-time execution" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Agent platform · Jivi AI</p>
+                <h3 class="case-title"><a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener">Agent Studio</a></h3>
+                <p class="case-line">Postman, but for agents: build, version, test and ship them from one place.</p>
+                <ul class="case-points">
+                    <li>Multi-agent workflows with tools, conditions and auto-generated APIs</li>
+                    <li>Versioned rollouts, A/B tests and evals at scale</li>
+                    <li>Short-term, long-term and episodic memory</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">200+</span><span class="case-stat-label">agents in production at Jivi</span></p>
+                <div class="case-links">
+                    <a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener" class="link-pill">See Jivi's AI agents →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case reveal c-violet" data-focus="yeapp">
+            <a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener" class="case-media phones" aria-label="Yeapp on Google Play">
+                <img src="images/yeapp/icon.png" alt="" class="phones-icon" loading="lazy" decoding="async">
+                <img src="images/yeapp/shot1.webp" alt="Yeapp chat list with voice messages - Talk, don't type" loading="lazy" decoding="async">
+                <img src="images/yeapp/shot2.webp" alt="Yeapp group voice chat" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Voice-first social app · KRAFTON <span class="badge">● Live on Google Play</span></p>
+                <h3 class="case-title"><a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener">Yeapp</a></h3>
+                <p class="case-line">A voice-first messenger for KRAFTON, the PUBG MOBILE company.</p>
+                <ul class="case-points">
+                    <li>Owned the voice AI infrastructure, backend and frontend</li>
+                    <li>From development to the Play Store in under 40 days</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">10K+</span><span class="case-stat-label">downloads on Google Play</span></p>
+                <div class="case-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener" class="link-pill">Get it on Google Play →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case flip reveal c-coral" data-focus="ludo">
+            <a href="https://play.google.com/store/apps/details?id=com.superking.ludo.star" target="_blank" rel="noopener" class="case-media phones ludo" aria-label="Ludo STAR by Gameberry Labs on Google Play">
+                <img src="images/ludo/icon.png" alt="" class="phones-icon" loading="lazy" decoding="async">
+                <img src="images/ludo/shot1.webp" alt="A Ludo STAR game in progress" loading="lazy" decoding="async">
+                <img src="images/ludo/shot3.webp" alt="Ludo STAR - play with friends" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Real-time voice moderation · Gameberry Labs</p>
+                <h3 class="case-title">Voice Moderation for Ludo STAR</h3>
+                <p class="case-line">Live voice moderation for a game with 100M+ downloads.</p>
+                <ul class="case-points">
+                    <li>A moderation agent joins the room when a player is reported</li>
+                    <li>Four checks per line: keywords, LLM judge, banter, toxicity</li>
+                    <li>Gameberry edits the rulebook and verdicts update instantly</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">100M+</span><span class="case-stat-label">downloads of the game it protects</span></p>
+                <div class="case-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.superking.ludo.star" target="_blank" rel="noopener" class="link-pill">See Ludo STAR →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case reveal c-lime" data-focus="sudoviz">
+            <a href="https://www.sudoviz.com/" target="_blank" rel="noopener" class="case-media screens single sudoviz" aria-label="Sudoviz - open the site">
+                <img src="images/sudoviz/home.jpg" alt="sudoviz.com today: Gaussian, a runtime firewall for AI agents" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">GenAI for code security · Sudoviz (now Gaussian)</p>
+                <h3 class="case-title"><a href="https://www.sudoviz.com/" target="_blank" rel="noopener">Sudoviz</a></h3>
+                <p class="case-line">An AI engine that finds and fixes security vulnerabilities in code, for enterprise security teams.</p>
+                <ul class="case-points">
+                    <li>GenAI code analysis that scans GitHub repositories for vulnerabilities</li>
+                    <li>AI-suggested fixes, explained so developers can act on them</li>
+                    <li>A VS Code extension that brings findings and fixes into the editor</li>
+                    <li>One place to track, manage and resolve issues across every repo</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num word">Find → fix</span><span class="case-stat-label">the platform later grew into TuringMind and Gaussian</span></p>
+                <div class="case-links">
+                    <a href="https://www.sudoviz.com/" target="_blank" rel="noopener" class="link-pill">Visit Sudoviz →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case flip reveal c-coral" data-focus="heart-rate">
+            <div class="case-media pulse-art" aria-hidden="true">
+                <div class="hr-window">
+                    <div class="hr-head"><span class="hr-dot"></span>Heart rate · phone camera</div>
+                    <div class="hr-main"><span class="hr-heart">♥</span><span class="hr-bpm" id="pulseBpm">72</span><span class="hr-unit">BPM</span></div>
+                    <svg class="hr-wave" viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M0 40 L30 40 L38 36 L44 40 L58 40 L64 10 L71 62 L78 34 L86 40 L118 40 L126 36 L132 40 L146 40 L152 10 L159 62 L166 34 L174 40 L206 40 L214 36 L220 40 L234 40 L240 10 L247 62 L254 34 L262 40 L300 40"/></svg>
+                    <div class="hr-compare">
+                        <span class="hr-chip">Camera <b id="pulseCam">72</b> · Machine <b id="pulseRef">72</b></span>
+                        <span class="hr-chip ok">✓ match</span>
+                    </div>
+                </div>
+            </div>
+            <div class="case-body">
+                <p class="case-kicker">Health tech · Jivi AI</p>
+                <h3 class="case-title">Camera Heart-Rate Monitoring</h3>
+                <p class="case-line">Measures your heart rate from a phone camera, in real time.</p>
+                <ul class="case-points">
+                    <li>Reads facial and fingertip signals with MediaPipe</li>
+                    <li>Benchmarked against real BPM machines</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">99.2%</span><span class="case-stat-label">accuracy</span></p>
+            </div>
+        </article>
+
+        <article class="case reveal c-amber" data-focus="pakkaprofile">
+            <a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener" class="case-media pakka" aria-label="PakkaProfile - open the site">
+                <video class="pakka-game" src="images/pakka/game.mp4" poster="images/pakka/game-poster.jpg" autoplay muted loop playsinline aria-label="A candidate's avatar exploring a 3D game world during a PakkaProfile assessment"></video>
+                <video class="pakka-pip" src="images/pakka/analysis.mp4" poster="images/pakka/analysis-poster.jpg" autoplay muted loop playsinline aria-label="Video analysis tagging a candidate's anxiousness, articulation, grammar, energy and fluency"></video>
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Game-based hiring · PakkaProfile</p>
+                <h3 class="case-title"><a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener">PakkaProfile</a></h3>
+                <p class="case-line">Interviews replaced by games: candidates play, and AI reads 50+ competencies from how they play.</p>
+                <ul class="case-points">
+                    <li>Games and Unity 3D worlds, including a metaverse for hiring</li>
+                    <li>Video and audio analysis of how candidates speak</li>
+                    <li>Improved the system's performance by over 100%</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">1L+</span><span class="case-stat-label">downloads · clients include WhiteHat Jr, Uber, Ola, Swiggy</span></p>
+                <div class="case-links">
+                    <button type="button" class="link-pill play-cta" data-youtube="TGEq-XpE5KY" data-title="PakkaProfile · Pakka Assess demo">Watch demo ▶</button>
+                    <a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener" class="link-plain">Visit PakkaProfile →</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- MORE PROJECTS -->
+        <div class="reveal more-head">
+            <p class="section-label"><span class="idx">02</span> More projects</p>
+        </div>
+        <div class="mini-grid stagger">
+            <div class="mini reveal c-lime" style="--i:0" data-focus="agentsman">
+                <a href="https://agentsman.vercel.app/" target="_blank" rel="noopener" class="mini-media glyph-stage" aria-label="Agentsman"><div class="glyph" data-glyph="fox" aria-hidden="true"></div></a>
+                <div class="mini-body">
+                    <h3 class="mini-title"><a href="https://agentsman.vercel.app/" target="_blank" rel="noopener">Agentsman</a> <span class="chip">My AI SaaS</span></h3>
+                    <p class="mini-desc">My own no-code platform for building AI agent workflows, serving the biggest fintech startup in the UAE.</p>
+                    <div class="mini-links"><a href="https://agentsman.vercel.app/" target="_blank" rel="noopener">Visit →</a></div>
+                </div>
+            </div>
+
+            <div class="mini reveal c-violet" style="--i:1" data-focus="echo-voice">
+                <a href="https://www.npmjs.com/package/echo-voice" target="_blank" rel="noopener" class="mini-media glyph-stage" aria-label="echo-voice on npm"><div class="glyph" data-glyph="bunny" aria-hidden="true"></div></a>
+                <div class="mini-body">
+                    <h3 class="mini-title"><a href="https://www.npmjs.com/package/echo-voice" target="_blank" rel="noopener">echo-voice</a> <span class="chip violet">npm</span></h3>
+                    <p class="mini-desc">A voice client SDK: voice detection, turn control, barge-in and a React hook.</p>
+                    <div class="mini-links"><a href="https://www.npmjs.com/package/echo-voice" target="_blank" rel="noopener">npm →</a></div>
+                </div>
+            </div>
+
+            <div class="mini reveal c-amber" style="--i:2" data-focus="claucat">
+                <a href="https://github.com/HUSS41N/claucat" target="_blank" rel="noopener" class="mini-media glyph-stage" aria-label="ClauCat on GitHub"><div class="glyph" data-glyph="cat" aria-hidden="true"></div></a>
+                <div class="mini-body">
+                    <h3 class="mini-title"><a href="https://github.com/HUSS41N/claucat" target="_blank" rel="noopener">ClauCat</a> <span class="chip">Open source</span></h3>
+                    <p class="mini-desc">A pixel cat that floats over your screen and babysits your Claude Code sessions.</p>
+                    <div class="mini-links"><a href="https://github.com/HUSS41N/claucat" target="_blank" rel="noopener">GitHub →</a></div>
+                </div>
+            </div>
+
+            <div class="mini reveal c-coral" style="--i:3" data-focus="pulse">
+                <a href="https://github.com/HUSS41N/pulse" target="_blank" rel="noopener" class="mini-media glyph-stage" aria-label="Pulse on GitHub"><div class="glyph" data-glyph="dog" aria-hidden="true"></div></a>
+                <div class="mini-body">
+                    <h3 class="mini-title"><a href="https://github.com/HUSS41N/pulse" target="_blank" rel="noopener">Pulse</a> <span class="chip">Open source</span></h3>
+                    <p class="mini-desc">A video studio with uploads, transcoding, AI moderation and live progress.</p>
+                    <div class="mini-links"><a href="https://github.com/HUSS41N/pulse" target="_blank" rel="noopener">GitHub →</a></div>
+                </div>
+            </div>
+
+            <div class="mini reveal c-teal" style="--i:4" data-focus="intake">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="koala" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Healthcare AI Intake <span class="chip">Voice agent</span></h3>
+                    <p class="mini-desc">A voice agent for clinical intake that backs every answer with what the patient said.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-violet" style="--i:5" data-focus="interviewing">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="owl" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">AI Interviewing <span class="chip violet">Voice agent</span></h3>
+                    <p class="mini-desc">A voice agent that runs candidate interviews and scores the answers.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-amber" style="--i:6" data-focus="router">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="frog" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Model Router <span class="chip">LLMs</span></h3>
+                    <p class="mini-desc">Benchmarks every model for speed and cost, then sends each task to the best fit.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-coral" style="--i:7" data-focus="evals">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="penguin" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">LLM Evals <span class="chip">Quality</span></h3>
+                    <p class="mini-desc">Bulk testing, quality scoring and prompt evals for agent workflows.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-lime" style="--i:8" data-focus="search">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="mouse" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Semantic Search <span class="chip">RAG</span></h3>
+                    <p class="mini-desc">Search and recommendations over healthcare data, on embeddings and OpenSearch.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-teal" style="--i:9" data-focus="design-skill">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="pig" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Frontend Design Skill <span class="chip">AI + UI</span></h3>
+                    <p class="mini-desc">An agent skill that makes AI-written frontend code consistent and on-brand.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-amber" style="--i:10" data-focus="memory">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="bear" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Agent Memory <span class="chip">Agents</span></h3>
+                    <p class="mini-desc">Short-term, long-term and episodic memory, so agents remember what matters.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-violet" style="--i:11" data-focus="streaming-eval">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="bird" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Voice Race <span class="chip violet">Streaming eval</span></h3>
+                    <p class="mini-desc">Races streaming against batch speech on the same audio: speed, billed audio and cost.</p>
+                </div>
+            </div>
+        </div>
+        <p class="more-gh">See more on <a href="https://github.com/HUSS41N" target="_blank" rel="noopener">GitHub</a></p>
+
+        <div class="cta-band reveal">
+            <h3 class="cta-band-title">Building with <em>agents</em>, voice or LLMs?</h3>
+            <p class="cta-band-sub">A two-line email is enough.</p>
+            <div class="cta-band-actions">
+                <a href="mailto:hussainakhtar1111@gmail.com?subject=Hello%20Hussain" class="btn btn-primary">Email me</a>
+                <a href="https://linkedin.com/in/md-hussain-baa178136" target="_blank" rel="noopener" class="link-plain">or message me on LinkedIn →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="reveal">
+            <p class="section-label"><span class="idx">03</span> About</p>
+            <h2 class="section-title">Agents, voice and LLMs, <em>at scale</em>.</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-bio reveal">
+                <p>I design the systems around the model: <strong>orchestration</strong>, workflows, memory, routing and evals.</p>
+                <p>Then I make them hold up in production: <strong>200+ agents</strong> and an AI doctor at Jivi, an app for <strong>KRAFTON</strong>, and Echo, a platform running <strong>440+ models</strong>.</p>
+            </div>
+            <div class="stats-grid reveal">
+                <div class="stat"><div class="stat-number">3.8M</div><div class="stat-label">App downloads</div></div>
+                <div class="stat"><div class="stat-number">80–120K</div><div class="stat-label">Daily active users</div></div>
+                <div class="stat"><div class="stat-number">200+</div><div class="stat-label">Agents in production</div></div>
+                <div class="stat"><div class="stat-number">440+</div><div class="stat-label">Models in Echo</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" aria-label="Skills">
+    <div class="container">
+        <div class="reveal">
+            <p class="section-label"><span class="idx">04</span> Skills</p>
+            <h2 class="section-title">What I work with.</h2>
+        </div>
+        <div class="skills-rows reveal">
+            <div class="skill-row" data-focus="skills-ai">
+                <div class="skill-row-title">Agentic AI &amp; LLMs</div>
+                <p class="skill-row-list"><span class="skill core">Multi-Agent Systems</span> <span class="sep">/</span> <span class="skill core">Agent Orchestration</span> <span class="sep">/</span> <span class="skill core">Agent Workflows</span> <span class="sep">/</span> <span class="skill core">LangGraph</span> <span class="sep">/</span> <span class="skill">LangChain</span> <span class="sep">/</span> <span class="skill">Generative AI</span> <span class="sep">/</span> <span class="skill">Prompt Engineering</span> <span class="sep">/</span> <span class="skill core">RAG</span> <span class="sep">/</span> <span class="skill">Embeddings</span> <span class="sep">/</span> <span class="skill">Vector Databases</span> <span class="sep">/</span> <span class="skill">OpenSearch</span> <span class="sep">/</span> <span class="skill">LLM Memory</span></p>
+            </div>
+            <div class="skill-row" data-focus="skills-scale">
+                <div class="skill-row-title">AI at Scale</div>
+                <p class="skill-row-list"><span class="skill core">Model Routing</span> <span class="sep">/</span> <span class="skill core">Model Benchmarking</span> <span class="sep">/</span> <span class="skill core">LLM Evaluation</span> <span class="sep">/</span> <span class="skill">A/B Rollouts</span> <span class="sep">/</span> <span class="skill">Agent Versioning</span> <span class="sep">/</span> <span class="skill">Monitoring</span> <span class="sep">/</span> <span class="skill">Tracing</span> <span class="sep">/</span> <span class="skill">Observability</span> <span class="sep">/</span> <span class="skill">Cost Optimization</span> <span class="sep">/</span> <span class="skill">Local and Hosted Models</span></p>
+            </div>
+            <div class="skill-row" data-focus="skills-voice">
+                <div class="skill-row-title">Voice AI</div>
+                <p class="skill-row-list"><span class="skill core">Voice Agents</span> <span class="sep">/</span> <span class="skill core">Real-Time Voice AI</span> <span class="sep">/</span> <span class="skill core">WebRTC</span> <span class="sep">/</span> <span class="skill">Speech Workflows</span> <span class="sep">/</span> <span class="skill">STT &amp; TTS</span> <span class="sep">/</span> <span class="skill">Voice Moderation</span></p>
+            </div>
+            <div class="skill-row" data-focus="skills-frontend">
+                <div class="skill-row-title">Languages &amp; Frontend</div>
+                <p class="skill-row-list"><span class="skill core">TypeScript</span> <span class="sep">/</span> <span class="skill core">JavaScript</span> <span class="sep">/</span> <span class="skill core">Python</span> <span class="sep">/</span> <span class="skill">C++</span> <span class="sep">/</span> <span class="skill core">React.js</span> <span class="sep">/</span> <span class="skill core">Next.js</span> <span class="sep">/</span> <span class="skill">React Native</span> <span class="sep">/</span> <span class="skill">Micro-frontends</span> <span class="sep">/</span> <span class="skill">Design Systems</span></p>
+            </div>
+            <div class="skill-row" data-focus="skills-backend">
+                <div class="skill-row-title">Backend &amp; Infrastructure</div>
+                <p class="skill-row-list"><span class="skill core">Node.js</span> <span class="sep">/</span> <span class="skill">Express.js</span> <span class="sep">/</span> <span class="skill core">FastAPI</span> <span class="sep">/</span> <span class="skill">Flask</span> <span class="sep">/</span> <span class="skill">Django</span> <span class="sep">/</span> <span class="skill">REST APIs</span> <span class="sep">/</span> <span class="skill core">WebSockets</span> <span class="sep">/</span> <span class="skill">MongoDB</span> <span class="sep">/</span> <span class="skill core">Docker</span> <span class="sep">/</span> <span class="skill">Kubernetes</span> <span class="sep">/</span> <span class="skill core">AWS</span> <span class="sep">/</span> <span class="skill">System Design</span> <span class="sep">/</span> <span class="skill">Distributed Systems</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="container">
+        <div class="reveal">
+            <p class="section-label"><span class="idx">05</span> Experience</p>
+            <h2 class="section-title">Where I've worked.</h2>
+        </div>
+        <div class="timeline reveal">
+            <div class="timeline-item" data-focus="tph">
+                <div class="timeline-head">
+                    <h3 class="timeline-role">Product Engineer</h3>
+                    <span class="timeline-dates">Apr 2026 - Present</span>
+                    <span class="tl-chip">Agentic &amp; voice AI</span>
+                </div>
+                <div class="timeline-company">The Product Highway</div>
+                <p class="timeline-about">Builds AI and voice products for clients like KRAFTON and Gameberry Labs, on its own platform, Echo.</p>
+                <ul class="tl-points">
+                    <li>Built <a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a>: agents, voice agents and workflows on 440+ models</li>
+                    <li>Shipped Yeapp for KRAFTON in under 40 days</li>
+                    <li>Cut a client's voice cost from ₹4–5 to ₹0.7–1.3 a minute</li>
+                    <li>Delivered Ludo STAR voice moderation, healthcare intake and AI interviewing</li>
+                </ul>
+            </div>
+            <div class="timeline-item" data-focus="jivi">
+                <div class="timeline-head">
+                    <h3 class="timeline-role">Software Development Engineer II</h3>
+                    <span class="timeline-dates">May 2024 - Apr 2026</span>
+                    <span class="tl-chip">Health AI</span>
+                </div>
+                <div class="timeline-company"><a href="https://jivi.ai" target="_blank" rel="noopener">Jivi AI</a>, Gurugram</div>
+                <p class="timeline-about">AI healthcare: an AI doctor and medical AI agents in an app with 3.8M downloads, used in 170+ countries.</p>
+                <ul class="tl-points">
+                    <li>Built the end-to-end AI systems behind Dr. Jivi: 80–120K people talk to it daily</li>
+                    <li>Built Agent Studio: 200+ agents in production</li>
+                    <li>Built the Health Coach, agent memory, eval pipelines and A/B rollouts</li>
+                    <li>Camera heart-rate monitoring at 99.2% accuracy</li>
+                </ul>
+            </div>
+            <div class="timeline-item" data-focus="sudoviz-role">
+                <div class="timeline-head">
+                    <h3 class="timeline-role">Senior Software Engineer</h3>
+                    <span class="timeline-dates">Mar 2023 - May 2024</span>
+                    <span class="tl-chip">AI security</span>
+                </div>
+                <div class="timeline-company"><a href="https://www.sudoviz.com/" target="_blank" rel="noopener">Sudoviz</a>, California (Remote)</div>
+                <p class="timeline-about">An AI security platform that finds and fixes vulnerabilities in code for enterprise teams. Now Gaussian.</p>
+                <ul class="tl-points">
+                    <li>GenAI code analysis and fixes for enterprise security teams</li>
+                    <li>A VS Code extension that surfaces and fixes vulnerabilities in the editor</li>
+                    <li>Tracking and resolving vulnerabilities across repositories</li>
+                </ul>
+            </div>
+            <div class="timeline-item" data-focus="pakka">
+                <div class="timeline-head">
+                    <h3 class="timeline-role">Software Engineer</h3>
+                    <span class="timeline-dates">Jan 2022 - Nov 2022</span>
+                    <span class="tl-chip">Games &amp; Unity 3D</span>
+                </div>
+                <div class="timeline-company"><a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener">PakkaProfile</a>, Bengaluru</div>
+                <p class="timeline-about">Game-based hiring: candidates play games instead of interviews, and AI assesses 50+ competencies.</p>
+                <ul class="tl-points">
+                    <li>Games and Unity 3D, including a metaverse for hiring</li>
+                    <li>Video and audio data processing for assessments</li>
+                    <li>1L+ downloads; clients include WhiteHat Jr, Uber, Ola and Swiggy</li>
+                    <li>Improved the system's performance by over 100%</li>
+                </ul>
+            </div>
+            <div class="timeline-item" data-focus="mca">
+                <div class="timeline-head">
+                    <h3 class="timeline-role">Master of Computer Application</h3>
+                    <span class="timeline-dates">2020 - 2022</span>
+                    <span class="tl-chip">Education</span>
+                </div>
+                <div class="timeline-company">Jamia Hamdard, New Delhi</div>
+            </div>
+            <div class="timeline-item" data-focus="bca">
+                <div class="timeline-head">
+                    <h3 class="timeline-role">Bachelor of Computer Application</h3>
+                    <span class="timeline-dates">2017 - 2020</span>
+                    <span class="tl-chip">Education</span>
+                </div>
+                <div class="timeline-company">Jamia Hamdard, New Delhi</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="reveal">
+            <p class="section-label"><span class="idx">06</span> Contact</p>
+            <p class="contact-status"><span class="pulse" aria-hidden="true"></span>Open to conversations · India or remote</p>
+            <h2 class="contact-title">Let's build something that <em>scales</em>.</h2>
+            <p class="cta-tagline">Need someone to take an agent or voice product from idea to thousands of daily users? Let's talk.</p>
+            <div class="contact-links">
+                <a href="mailto:hussainakhtar1111@gmail.com?subject=Hello%20Hussain" class="btn btn-primary">hussainakhtar1111@gmail.com</a>
+                <a href="https://linkedin.com/in/md-hussain-baa178136" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/HUSS41N" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
+                <a href="Md-Hussain-Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">Resume</a>
+            </div>
+            <p class="contact-note">A two-line email is enough. Tell me what you're building.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Md Hussain · India <span class="footer-clock" id="tlvClock" aria-hidden="true"></span></p>
+        <p class="footer-sign">Built and shipped in <em>code</em>.</p>
+    </div>
+</footer>
+
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+    <div class="video-modal-inner">
+        <button type="button" class="video-modal-close" aria-label="Close video">&times;</button>
+        <video controls playsinline preload="none"></video>
+        <p class="video-modal-title"></p>
+    </div>
+</div>
+
+<div class="email-modal" id="emailModal" role="dialog" aria-modal="true" aria-label="Contact options" hidden>
+    <div class="email-modal-backdrop" data-close></div>
+    <div class="email-modal-card">
+        <button class="email-modal-close" aria-label="Close" data-close>&times;</button>
+        <p class="email-modal-label">Email me at</p>
+        <p class="email-modal-address">hussainakhtar1111@gmail.com</p>
+        <div class="email-modal-actions">
+            <button class="btn btn-primary" id="copyEmailBtn">Copy address</button>
+            <a class="btn btn-outline" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hussainakhtar1111@gmail.com&amp;su=Hello%20Hussain" target="_blank" rel="noopener" id="gmailBtn">Open in Gmail</a>
+            <a class="btn btn-outline" href="mailto:hussainakhtar1111@gmail.com?subject=Hello%20Hussain" id="mailAppBtn">Mail app</a>
+        </div>
+        <a class="email-modal-tg" href="https://linkedin.com/in/md-hussain-baa178136" target="_blank" rel="noopener">or message me on LinkedIn →</a>
+    </div>
+</div>
+
+<script src="main.js?v=39" defer></script>
+<script src="agent.js?v=37" defer></script>
+<script>
+/* Glyph-matrix animals for the smaller project cards. The cat, dog, bunny and fox are
+   ClauCat's own 12x12 pets (github.com/HUSS41N/claucat); '#' is a lit LED.
+   Each glyph is one canvas, redrawn only when it changes: it blinks while on screen,
+   and on hover it "thinks" the way ClauCat does - eyes wander, LEDs shimmer. */
+(function(){
+  var G = {
+    cat:    ['.#........#.','.##......##.','.###....###.','.##########.','############','###..##..###','###..##..###','############','#####..#####','####.##.####','.##########.','..########..'],
+    dog:    ['##........##','###......###','####....####','.##########.','############','###..##..###','###..##..###','############','####....####','#####..#####','.##########.','..########..'],
+    bunny:  ['..##....##..','..##....##..','..##....##..','.##########.','############','###..##..###','###..##..###','############','#####..#####','####.##.####','.##########.','..########..'],
+    fox:    ['#..........#','##........##','###......###','####.##.####','############','###..##..###','###..##..###','############','#####..#####','.####..####.','..########..','...######...'],
+    bear:   ['.##......##.','####....####','####....####','.##########.','############','###..##..###','###..##..###','############','####....####','####.##.####','.##########.','..########..'],
+    mouse:  ['.###....###.','#####..#####','#####..#####','.##########.','..########..','..#..##..#..','..#..##..#..','..########..','...######...','....####....','.....##.....','............'],
+    pig:    ['.#........#.','###......###','.##########.','############','###..##..###','###..##..###','############','###......###','###.#..#.###','###......###','.##########.','..########..'],
+    owl:    ['#..........#','##........##','.##########.','############','#....##....#','#.##.##.##.#','#....##....#','############','#####..#####','######.#####','.##########.','..##....##..'],
+    koala:  ['###......###','####....####','############','############','###..##..###','###..##..###','#####..#####','####....####','####....####','#####..#####','.##########.','..########..'],
+    frog:   ['............','.###....###.','##.##..##.##','############','############','############','#..........#','##........##','.##########.','..########..','.##......##.','###......###'],
+    penguin:['....####....','..########..','.###....###.','.##.#..#.##.','.##..##..##.','###......###','##........##','##........##','.#........#.','.##......##.','..########..','.###....###.'],
+    bird:   ['....####....','...######...','..##.#####..','..#########.','..######.###','.#######....','##########..','##########..','.########...','..######....','...#..#.....','..##.##.....']
+  };
+  // rows holding the eyes (the OFF pixels that move); [] = this face has no movable eyes
+  var EYES = { frog: [], penguin: [], owl: [5], bird: [2], pig: [4,5], koala: [4,5] };
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N = 12, glyphs = [];
+
+  function shiftEyes(base, rows, d) {
+    if (!d) return base;
+    return base.map(function(row, r){
+      if (rows.indexOf(r) < 0) return row;
+      var out = row.split('').map(function(){ return '#'; });
+      row.split('').forEach(function(ch, c){ if (ch === '.') out[Math.min(N-1, Math.max(0, c+d))] = '.'; });
+      return out.join('');
+    });
+  }
+  function blinkRows(base, rows) {
+    return base.map(function(row, r){ return r === rows[0] ? row.replace(/\./g, '#') : row; });
+  }
+
+  function Glyph(el) {
+    this.el = el; this.name = el.getAttribute('data-glyph'); this.base = G[this.name];
+    this.eyes = EYES[this.name] || [5, 6];
+    this.canvas = document.createElement('canvas'); el.appendChild(this.canvas);
+    this.ctx = this.canvas.getContext('2d');
+    this.card = el.closest('.mini') || el;
+    this.visible = false; this.hover = false; this.timer = null; this.frame = 0;
+    this.size(); this.draw(this.base);
+  }
+  Glyph.prototype.size = function(){
+    var dpr = Math.min(window.devicePixelRatio || 1, 2), w = this.el.clientWidth || 120;
+    this.canvas.width = this.canvas.height = Math.round(w * dpr); this.px = w * dpr;
+    var c = getComputedStyle(this.card).getPropertyValue('--c').trim() || '#ffffff';
+    this.lit = c;
+  };
+  Glyph.prototype.draw = function(rows, dim){
+    var ctx = this.ctx, S = this.px, pad = S * 0.17, cell = (S - pad * 2) / N, r = cell * 0.36;
+    ctx.clearRect(0, 0, S, S);
+    // unlit LEDs in one path
+    ctx.fillStyle = '#1b1b20'; ctx.beginPath();
+    rows.forEach(function(row, y){ for (var x = 0; x < N; x++) if (row[x] !== '#') { ctx.moveTo(pad + x*cell + cell/2 + r, pad + y*cell + cell/2); ctx.arc(pad + x*cell + cell/2, pad + y*cell + cell/2, r, 0, 6.2832); } });
+    ctx.fill();
+    // lit LEDs: colour, a soft glow, and a white core so they read as light
+    ctx.save(); ctx.shadowColor = this.lit; ctx.shadowBlur = cell * 0.7; ctx.fillStyle = this.lit;
+    var dimmed = [];
+    ctx.beginPath();
+    rows.forEach(function(row, y){ for (var x = 0; x < N; x++) if (row[x] === '#') {
+      if (dim && dim[y*N + x]) { dimmed.push([x, y]); continue; }
+      ctx.moveTo(pad + x*cell + cell/2 + r, pad + y*cell + cell/2); ctx.arc(pad + x*cell + cell/2, pad + y*cell + cell/2, r, 0, 6.2832);
+    } });
+    ctx.fill(); ctx.restore();
+    ctx.globalAlpha = 0.45; ctx.fillStyle = '#fff'; ctx.fill(); ctx.globalAlpha = 1;
+    if (dimmed.length) {
+      ctx.globalAlpha = 0.35; ctx.fillStyle = this.lit; ctx.beginPath();
+      dimmed.forEach(function(p){ ctx.moveTo(pad + p[0]*cell + cell/2 + r, pad + p[1]*cell + cell/2); ctx.arc(pad + p[0]*cell + cell/2, pad + p[1]*cell + cell/2, r, 0, 6.2832); });
+      ctx.fill(); ctx.globalAlpha = 1;
+    }
+  };
+  // idle: an occasional blink, only while on screen
+  Glyph.prototype.idle = function(){
+    var self = this; clearTimeout(this.timer);
+    if (still || !this.visible || this.hover || !this.eyes.length) return;
+    this.timer = setTimeout(function(){
+      if (!self.visible || self.hover) return;
+      self.draw(blinkRows(self.base, self.eyes));
+      setTimeout(function(){ if (!self.hover) self.draw(self.base); self.idle(); }, 150);
+    }, 2400 + Math.random() * 2600);
+  };
+  // hover: think - eyes look around, a few LEDs flicker
+  var LOOK = [0, -1, -1, -1, 0, 1, 1, 1, 0, 0];
+  Glyph.prototype.think = function(){
+    var self = this; clearTimeout(this.timer);
+    if (!this.hover) return;
+    var rows = this.eyes.length ? shiftEyes(this.base, this.eyes, LOOK[this.frame % LOOK.length]) : this.base;
+    if (this.eyes.length && this.frame % 23 === 11) rows = blinkRows(rows, this.eyes);
+    var dim = {}; for (var i = 0; i < 14; i++) dim[(Math.random() * N * N) | 0] = 1;
+    this.draw(rows, dim); this.frame++;
+    this.timer = setTimeout(function(){ self.think(); }, 120);
+  };
+
+  document.querySelectorAll('.glyph[data-glyph]').forEach(function(el){
+    if (!G[el.getAttribute('data-glyph')]) return;
+    var g = new Glyph(el); glyphs.push(g);
+    if (still) return;
+    g.card.addEventListener('mouseenter', function(){ g.hover = true; g.frame = 0; g.think(); });
+    g.card.addEventListener('mouseleave', function(){ g.hover = false; clearTimeout(g.timer); g.draw(g.base); g.idle(); });
+  });
+  if (!still && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var g = glyphs.filter(function(x){ return x.el === en.target; })[0]; if (!g) return;
+        g.visible = en.isIntersecting;
+        if (g.visible) g.idle(); else clearTimeout(g.timer);
+      });
+    });
+    glyphs.forEach(function(g){ io.observe(g.el); });
+  }
+  var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(function(){ glyphs.forEach(function(g){ g.size(); g.draw(g.base); }); }, 150); });
+  // the theme toggle changes nothing the canvas uses, but card colours can: redraw once fonts/styles settle
+  window.addEventListener('load', function(){ glyphs.forEach(function(g){ g.size(); g.draw(g.base); }); });
+})();
+
+/* Heart-rate card: the reading drifts by a beat or two, like a live sensor. */
+(function(){
+  var el = document.getElementById('pulseBpm'); if (!el) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var on = false, t = null, vals = [71, 72, 72, 73, 72, 72, 71, 72];
+  var ref = document.getElementById('pulseRef'), cam = document.getElementById('pulseCam');
+  function tick(){ if (!on) return; var v = vals[(Math.random() * vals.length) | 0]; el.textContent = v; if (ref) ref.textContent = v; if (cam) cam.textContent = v; t = setTimeout(tick, 1400); }
+  new IntersectionObserver(function(es){ on = es[0].isIntersecting; clearTimeout(t); if (on) tick(); }).observe(el);
+})();
+
+/* Play-video CTA: opens the full clip, with sound and controls, in a player. */
+(function(){
+  var modal = document.getElementById('videoModal'); if (!modal) return;
+  var video = modal.querySelector('video'), title = modal.querySelector('.video-modal-title'), last = null, frame = null;
+  function close(){
+    video.pause(); video.removeAttribute('src'); video.load(); video.hidden = false;
+    if (frame) { frame.remove(); frame = null; }   // removing the iframe stops YouTube playback
+    modal.hidden = true; document.body.style.overflow = ''; if (last) last.focus();
+  }
+  document.querySelectorAll('.play-cta').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation(); last = btn;
+      title.textContent = btn.dataset.title || '';
+      if (btn.dataset.youtube) {
+        video.hidden = true;
+        frame = document.createElement('iframe');
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(btn.dataset.youtube) + '?autoplay=1&rel=0';
+        frame.title = btn.dataset.title || 'Video';
+        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        frame.allowFullscreen = true;
+        video.parentNode.insertBefore(frame, video);
+      } else {
+        video.poster = btn.dataset.poster || ''; video.src = btn.dataset.video;
+        video.play().catch(function(){});
+      }
+      modal.hidden = false; document.body.style.overflow = 'hidden';
+      modal.querySelector('.video-modal-close').focus();
+    });
+  });
+  modal.addEventListener('click', function(e){ if (e.target === modal || e.target.classList.contains('video-modal-close')) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
+})();
+</script>
+</body>
+</html>
