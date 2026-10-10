@@ -1,12 +1,12 @@
 # Md Hussain · Portfolio
 
-Personal portfolio of **Md Hussain**, Full Stack & AI Engineer working on agentic AI, voice AI and LLM orchestration.
+Personal portfolio of **Md Hussain**, Senior AI Product Engineer building production LLM, voice AI and agentic systems.
 
 It's a hand-built site with no framework: one HTML page, plain CSS and vanilla JS, plus one serverless function for the "Ask my AI" chat.
 
 ## What's on it
 
-- **Selected work.** Echo (an agentic and voice AI platform), Dr. Jivi, the Jivi Health Coach, Agent Studio, Yeapp for KRAFTON, voice moderation for Ludo STAR, Sudoviz, camera heart-rate monitoring and PakkaProfile.
+- **Selected work.** Echo (a voice AI platform), YEAPP for KRAFTON India, Scribe for Narayana Health, voice moderation for Ludo Star, Agent Studio and Dr. Jivi at Jivi AI, the Jivi Health Coach, Sudoviz, camera heart-rate monitoring and PakkaProfile.
 - **More projects.** Agentsman, echo-voice, ClauCat, Pulse and more. Each card has a 12×12 glyph-matrix animal drawn on a canvas, borrowed from [ClauCat](https://github.com/HUSS41N/claucat).
 - **Ask my AI.** A chat widget, "AI Hussain", that answers questions about my work. It streams replies from Claude and can scroll the page to the part it's talking about.
 - **⌘K command menu**, light/dark theme, reduced-motion support, and a layout that works from 360 px phones up.

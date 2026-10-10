@@ -49,11 +49,12 @@
         experience: '#experience .section-title',
         contact: '#contact .contact-title',
         echo: '[data-focus="echo"]',
+        yeapp: '[data-focus="yeapp"]',
+        scribe: '[data-focus="scribe"]',
+        ludo: '[data-focus="ludo"]',
+        'agent-studio': '[data-focus="agent-studio"]',
         'jivi-scale': '[data-focus="jivi-scale"]',
         'health-coach': '[data-focus="health-coach"]',
-        'agent-studio': '[data-focus="agent-studio"]',
-        yeapp: '[data-focus="yeapp"]',
-        ludo: '[data-focus="ludo"]',
         sudoviz: '[data-focus="sudoviz"]',
         'heart-rate': '[data-focus="heart-rate"]',
         pakkaprofile: '[data-focus="pakkaprofile"]',
@@ -69,15 +70,18 @@
         'design-skill': '[data-focus="design-skill"]',
         memory: '[data-focus="memory"]',
         'streaming-eval': '[data-focus="streaming-eval"]',
+        'mcp-server': '[data-focus="mcp-server"]',
+        cascade: '[data-focus="cascade"]',
+        'design-system': '[data-focus="design-system"]',
         tph: '[data-focus="tph"]',
         jivi: '[data-focus="jivi"]',
         'sudoviz-role': '[data-focus="sudoviz-role"]',
         pakka: '[data-focus="pakka"]',
         'skills-ai': '[data-focus="skills-ai"]',
-        'skills-scale': '[data-focus="skills-scale"]',
         'skills-voice': '[data-focus="skills-voice"]',
+        'skills-backend': '[data-focus="skills-backend"]',
         'skills-frontend': '[data-focus="skills-frontend"]',
-        'skills-backend': '[data-focus="skills-backend"]'
+        'skills-infra': '[data-focus="skills-infra"]'
     };
     var focusReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0b0b0d" id="themeColorMeta">
     <script>(function(){try{var t=localStorage.getItem('theme');var light=t?(t==='light'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches);if(light){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeColorMeta').setAttribute('content','#faf9f7');}}catch(e){}})();</script>
-    <title>Md Hussain | Agentic AI &amp; Full Stack Engineer</title>
-    <meta name="description" content="Md Hussain - Full Stack and AI Engineer building agentic AI, voice AI, LLM orchestration and workflow systems that run at scale.">
+    <title>Md Hussain | Senior AI Product Engineer</title>
+    <meta name="description" content="Md Hussain - Senior AI Product Engineer building production LLM, voice AI and agentic systems: Echo, YEAPP for KRAFTON India, Scribe for Narayana Health, and 200+ agents at Jivi.">
     <meta name="author" content="Md Hussain">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="Md Hussain, agentic AI, AI engineer, voice AI, LLM orchestration, multi-agent systems, AI workflows, full stack engineer, Echo, Agentsman">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Md Hussain | Agentic AI &amp; Full Stack Engineer">
+    <meta property="og:title" content="Md Hussain | Senior AI Product Engineer">
     <meta property="og:description" content="Agentic AI, voice AI, LLM orchestration and workflows, built to run at scale.">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Md Hussain | Agentic AI &amp; Full Stack Engineer">
+    <meta name="twitter:title" content="Md Hussain | Senior AI Product Engineer">
     <meta name="twitter:description" content="Agentic AI, voice AI, LLM orchestration and workflows, built to run at scale.">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
@@ -30,12 +30,12 @@
         "@type": "Person",
         "name": "Md Hussain",
         "givenName": "Hussain",
-        "jobTitle": "Full Stack & AI Engineer",
-        "description": "Full Stack and AI Engineer building agentic AI, voice AI, LLM orchestration and workflow systems that run at scale.",
+        "jobTitle": "Senior AI Product Engineer",
+        "description": "Senior AI Product Engineer with nearly 5 years building production LLM, voice AI and agentic systems.",
         "email": "hussainakhtar1111@gmail.com",
         "worksFor": { "@type": "Organization", "name": "The Product Highway" },
         "alumniOf": { "@type": "CollegeOrUniversity", "name": "Jamia Hamdard" },
-        "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
         "knowsAbout": ["Agentic AI", "Multi-Agent Systems", "Voice AI", "LLM Orchestration", "AI Workflows", "LLM Evaluation", "Model Routing", "RAG", "React", "Next.js", "TypeScript", "Python", "FastAPI", "Node.js", "AWS", "Kubernetes"],
         "sameAs": [
             "https://github.com/HUSS41N",
@@ -93,6 +93,29 @@
     .tl-points li { font-size:14.5px; }
     .tl-points li::before { background:#8a7bff; }
     button.link-pill { border:0; cursor:pointer; font-family:inherit; }
+
+    /* Scribe: a session window - who's speaking, and the note drafting itself. */
+    .case-media.scribe-art { display:grid; place-items:center; background: radial-gradient(100% 90% at 0% 0%, #5eead4, #0f766e 75%); border-color:transparent; }
+    .sc-window { width:76%; padding:clamp(14px,1.8vw,22px); border-radius:16px; background:#fff; color:#1d1d22; box-shadow:0 22px 50px rgba(0,60,50,.35); display:grid; gap:clamp(8px,1vw,12px); }
+    .sc-head { display:flex; align-items:center; gap:8px; font:600 12px/1 Inter, system-ui, sans-serif; color:#6b6b76; }
+    .sc-rec { width:8px; height:8px; border-radius:50%; background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.18); animation: rec 1.4s ease-in-out infinite; }
+    .sc-time { margin-left:auto; font-family:"JetBrains Mono", ui-monospace, monospace; font-weight:500; color:#8a8a94; font-variant-numeric: tabular-nums; }
+    .sc-lines { display:grid; gap:7px; }
+    .sc-line { display:flex; align-items:center; gap:10px; }
+    .sc-who { flex:0 0 72px; font:600 11px/1 Inter, system-ui, sans-serif; padding:5px 8px; border-radius:999px; text-align:center; }
+    .sc-who.a { background:#e0f2fe; color:#0369a1; } .sc-who.b { background:#ede9fe; color:#6d28d9; }
+    .sc-bar { display:block; height:8px; border-radius:999px; background:#e7e7ec; }
+    .sc-bar.soft { background:#eef6f4; height:7px; }
+    .sc-wave { display:inline-flex; gap:2px; align-items:center; height:14px; }
+    .sc-wave i { width:3px; border-radius:2px; background:#6d28d9; animation: wave 0.9s ease-in-out infinite; }
+    .sc-wave i:nth-child(1){height:5px;animation-delay:0s} .sc-wave i:nth-child(2){height:11px;animation-delay:.12s} .sc-wave i:nth-child(3){height:7px;animation-delay:.24s} .sc-wave i:nth-child(4){height:13px;animation-delay:.36s} .sc-wave i:nth-child(5){height:6px;animation-delay:.48s}
+    .sc-note { display:grid; gap:6px; padding-top:10px; border-top:1px solid #eee; }
+    .sc-note-head { display:flex; justify-content:space-between; font:600 12px/1 Inter, system-ui, sans-serif; color:#0f766e; margin-bottom:2px; }
+    .sc-note-head span { color:#8a8a94; font-weight:500; }
+    @keyframes rec { 50% { opacity:.35; } }
+    @keyframes wave { 50% { transform:scaleY(.4); } }
+    @media (prefers-reduced-motion: reduce) { .sc-rec, .sc-wave i { animation:none; } }
+    @media (max-width:640px) { .sc-window { width:88%; padding:12px 14px; gap:8px; } .sc-who { flex-basis:62px; font-size:10px; padding:4px 6px; } .sc-lines { gap:5px; } .sc-line:nth-child(3), .sc-note .sc-bar:last-child { display:none; } .sc-note { padding-top:8px; gap:5px; } }
 
     /* Heart-rate: a clean readout window, like a screen from the app. */
     .case-media.pulse-art { display:grid; place-items:center; background: radial-gradient(100% 90% at 0% 0%, #ff8fa3, #c9184a 75%); border-color:transparent; }
@@ -172,9 +195,9 @@
     <div class="hero-bg"></div>
     <div class="container">
         <div class="hero-content">
-            <p class="hero-label">Agentic AI <span class="dot">·</span> Voice AI <span class="dot">·</span> LLM Orchestration <span class="dot">·</span> <span class="loc">India</span></p>
+            <p class="hero-label">Senior AI Product Engineer <span class="dot">·</span> Voice AI <span class="dot">·</span> Agentic Systems <span class="dot">·</span> <span class="loc">Bengaluru</span></p>
             <h1>I build agentic AI systems that run <em>at scale</em><span class="accent-dot">.</span><span class="hero-wavy-wrap" aria-hidden="true"><svg width="92" height="34" viewBox="0 0 120 40" fill="none"><path id="heroWaveThick" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGradThick)" stroke-width="7" stroke-linecap="round" fill="none"/><path id="heroWaveThin" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGrad)" stroke-width="3" stroke-linecap="round" fill="none"/><g id="heroWavePen" opacity="0"><g transform="scale(2) translate(-7,-14.3) rotate(-30,8,8)"><path d="M12 3l1.2-1.2a1.5 1.5 0 012.1 2.1L7.5 11.7a3 3 0 01-1.3.8L4 13l.5-2.2a3 3 0 01.8-1.3L12 3z" stroke="url(#heroWaveGrad)" stroke-width="0.8" stroke-linecap="round" fill="none"/></g></g><defs><linearGradient id="heroWaveGrad" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff"/><stop offset="50%" stop-color="#c4b9ff"/><stop offset="100%" stop-color="#8a7bff"/></linearGradient><linearGradient id="heroWaveGradThick" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff" stop-opacity="0"/><stop offset="50%" stop-color="#b9afff" stop-opacity="0.45"/><stop offset="100%" stop-color="#8a7bff" stop-opacity="0.85"/></linearGradient></defs></svg></span></h1>
-            <p class="hero-desc">Full Stack &amp; AI Engineer. I build multi-agent systems, voice AI and LLM workflows, and take them from architecture to production: fast, reliable and affordable.</p>
+            <p class="hero-desc">Nearly 5 years building production LLM, voice AI and agentic systems, full stack, from architecture to the people using them.</p>
             <div class="hero-links">
                 <a href="mailto:hussainakhtar1111@gmail.com?subject=Hello%20Hussain" class="btn btn-primary">Email me</a>
                 <a href="Md-Hussain-Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">
@@ -183,7 +206,7 @@
                 </a>
                 <span class="hero-minor">or find me on <a href="https://github.com/HUSS41N" target="_blank" rel="noopener">GitHub</a> / <a href="https://linkedin.com/in/md-hussain-baa178136" target="_blank" rel="noopener">LinkedIn</a></span>
             </div>
-            <p class="hero-proof">80–120K people talk to Dr. Jivi daily <span class="dot">·</span> 200+ agents in production <span class="dot">·</span> 440+ models orchestrated in Echo</p>
+            <p class="hero-proof">YEAPP for KRAFTON India <span class="dot">·</span> 200+ agents in production at Jivi <span class="dot">·</span> 440+ models in Echo</p>
             <p class="hero-now"><span class="now-tag">Now</span>building <a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a> at The Product Highway <span class="dot">·</span> my own AI SaaS, <a href="https://agentsman.vercel.app/" target="_blank" rel="noopener">Agentsman</a></p>
         </div>
     </div>
@@ -209,17 +232,110 @@
                 <img src="images/echo/voiceflow-graph.jpg" alt="Echo VoiceFlow OS: a seven-node conversation flow the agent moves through mid-call" loading="lazy" decoding="async">
             </a>
             <div class="case-body">
-                <p class="case-kicker">Agentic &amp; voice AI platform · The Product Highway</p>
+                <p class="case-kicker">Voice AI platform · The Product Highway</p>
                 <h3 class="case-title"><a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a></h3>
-                <p class="case-line">One platform to build, test and run AI agents, voice agents and workflows on any model.</p>
+                <p class="case-line">A voice AI platform to build, deploy, benchmark and orchestrate voice agents and workflows.</p>
                 <ul class="case-points">
-                    <li>440+ models from 88+ vendors, routed by speed and cost</li>
-                    <li>Conversation flows where the agent switches steps live, mid-call</li>
-                    <li>Our streaming and chunking show words in ~1s and never bill silence</li>
+                    <li>One model layer for 440+ local and hosted models from 88+ vendors</li>
+                    <li>An MCP server: create and deploy voice agent flows from Claude, in plain language</li>
+                    <li>Benchmarks latency and cost per model and routes every call automatically</li>
                 </ul>
-                <p class="case-stat"><span class="case-stat-num">₹0.7–1.3</span><span class="case-stat-label">per voice minute for a client, down from ₹4–5</span></p>
+                <p class="case-stat"><span class="case-stat-num">₹0.7–1.3</span><span class="case-stat-label">per minute for ANSR Global, down from ₹4–5 (~75%)</span></p>
                 <div class="case-links">
                     <a href="https://echo.tphinfra.com" target="_blank" rel="noopener" class="link-pill">Open Echo →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case flip reveal c-violet" data-focus="yeapp">
+            <a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener" class="case-media phones" aria-label="Yeapp on Google Play">
+                <img src="images/yeapp/icon.png" alt="" class="phones-icon" loading="lazy" decoding="async">
+                <img src="images/yeapp/shot1.webp" alt="Yeapp chat list with voice messages - Talk, don't type" loading="lazy" decoding="async">
+                <img src="images/yeapp/shot2.webp" alt="Yeapp group voice chat" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Voice-first social app · KRAFTON India <span class="badge">● Live on Google Play</span></p>
+                <h3 class="case-title"><a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener">YEAPP</a></h3>
+                <p class="case-line">A voice-first messenger for KRAFTON India, the PUBG MOBILE company.</p>
+                <ul class="case-points">
+                    <li>Led a team of 4 engineers</li>
+                    <li>Owned the voice AI infrastructure, React Native app and NestJS backend</li>
+                    <li>From development to the Play Store in under 40 days</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">10K+</span><span class="case-stat-label">downloads on Google Play</span></p>
+                <div class="case-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener" class="link-pill">Get it on Google Play →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case reveal c-teal" data-focus="scribe">
+            <div class="case-media scribe-art" aria-hidden="true">
+                <div class="sc-window">
+                    <div class="sc-head"><span class="sc-rec"></span>Session · listening to the room <span class="sc-time" id="scribeTime">24:17</span></div>
+                    <div class="sc-lines">
+                        <div class="sc-line"><span class="sc-who a">Therapist</span><span class="sc-bar" style="width:78%"></span></div>
+                        <div class="sc-line"><span class="sc-who b">Client</span><span class="sc-bar" style="width:62%"></span></div>
+                        <div class="sc-line"><span class="sc-who a">Therapist</span><span class="sc-bar" style="width:70%"></span></div>
+                        <div class="sc-line live"><span class="sc-who b">Client</span><span class="sc-bar" style="width:44%"></span><span class="sc-wave"><i></i><i></i><i></i><i></i><i></i></span></div>
+                    </div>
+                    <div class="sc-note">
+                        <div class="sc-note-head">Clinical note <span>drafting…</span></div>
+                        <span class="sc-bar soft" style="width:92%"></span><span class="sc-bar soft" style="width:80%"></span><span class="sc-bar soft" style="width:58%"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="case-body">
+                <p class="case-kicker">AI therapy scribe · Narayana Health</p>
+                <h3 class="case-title">Scribe</h3>
+                <p class="case-line">Listens to a therapy session and writes the clinical note, so the therapist can stay with the person.</p>
+                <ul class="case-points">
+                    <li>Speaker diarization: it knows who said what</li>
+                    <li>Listens to the room, so nobody holds a phone or wears a mic</li>
+                    <li>Drafts clinical notes and keeps session context and records secure</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="case flip reveal c-coral" data-focus="ludo">
+            <a href="https://play.google.com/store/apps/details?id=com.superking.ludo.star" target="_blank" rel="noopener" class="case-media phones ludo" aria-label="Ludo STAR by Gameberry Labs on Google Play">
+                <img src="images/ludo/icon.png" alt="" class="phones-icon" loading="lazy" decoding="async">
+                <img src="images/ludo/shot1.webp" alt="A Ludo STAR game in progress" loading="lazy" decoding="async">
+                <img src="images/ludo/shot3.webp" alt="Ludo STAR - play with friends" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Real-time voice moderation · Gameberry Labs</p>
+                <h3 class="case-title">Voice Moderation for Ludo Star</h3>
+                <p class="case-line">Live voice moderation for Ludo Star, a game with 100M+ downloads.</p>
+                <ul class="case-points">
+                    <li>Works across all Indic languages, Arabic and Mexican Spanish</li>
+                    <li>A moderation agent joins the room when a player is reported</li>
+                    <li>Keyword, LLM-judge, banter and toxicity checks on every line</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">100M+</span><span class="case-stat-label">downloads of the game it protects</span></p>
+                <div class="case-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.superking.ludo.star" target="_blank" rel="noopener" class="link-pill">See Ludo Star →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case reveal c-teal" data-focus="agent-studio">
+            <a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener" class="case-media screens agentsman" aria-label="Jivi's AI agents">
+                <img src="images/agentsman/home.jpg" alt="Agent workflow builder: build AI workflows without code" loading="lazy" decoding="async">
+                <img src="images/agentsman/features.jpg" alt="Visual workflow designer, AI agent orchestration and real-time execution" loading="lazy" decoding="async">
+            </a>
+            <div class="case-body">
+                <p class="case-kicker">Agentic AI platform · Jivi AI</p>
+                <h3 class="case-title"><a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener">Agent Studio</a></h3>
+                <p class="case-line">Postman for agents: the platform behind 200+ production agents at Jivi.</p>
+                <ul class="case-points">
+                    <li>Multi-agent workflows on LangGraph with MCP tools and auto-generated APIs</li>
+                    <li>Real-time evals reaching 96% accuracy on OSCE clinical cases</li>
+                    <li>Agent versioning, A/B rollouts, and short, long and episodic memory</li>
+                </ul>
+                <p class="case-stat"><span class="case-stat-num">200+</span><span class="case-stat-label">agents in production</span></p>
+                <div class="case-links">
+                    <a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener" class="link-pill">See Jivi's AI agents →</a>
                 </div>
             </div>
         </article>
@@ -235,9 +351,9 @@
                 <ul class="case-points">
                     <li>I built the end-to-end AI systems behind it</li>
                     <li>Symptom questions, triage and advice in one conversation</li>
-                    <li>Inside an app with 3.8M downloads</li>
+                    <li>Inside an app with 3.8M+ downloads</li>
                 </ul>
-                <p class="case-stat"><span class="case-stat-num">80–120K</span><span class="case-stat-label">people talk to Dr. Jivi every day</span></p>
+                <p class="case-stat"><span class="case-stat-num">80–100K</span><span class="case-stat-label">daily active users on Jivi</span></p>
                 <div class="case-links">
                     <a href="https://jivi.ai" target="_blank" rel="noopener" class="link-pill">Visit Jivi →</a>
                 </div>
@@ -264,83 +380,19 @@
             </div>
         </article>
 
-        <article class="case flip reveal c-teal" data-focus="agent-studio">
-            <a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener" class="case-media screens agentsman" aria-label="Jivi's AI agents">
-                <img src="images/agentsman/home.jpg" alt="Agent workflow builder: build AI workflows without code" loading="lazy" decoding="async">
-                <img src="images/agentsman/features.jpg" alt="Visual workflow designer, AI agent orchestration and real-time execution" loading="lazy" decoding="async">
-            </a>
-            <div class="case-body">
-                <p class="case-kicker">Agent platform · Jivi AI</p>
-                <h3 class="case-title"><a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener">Agent Studio</a></h3>
-                <p class="case-line">Postman, but for agents: build, version, test and ship them from one place.</p>
-                <ul class="case-points">
-                    <li>Multi-agent workflows with tools, conditions and auto-generated APIs</li>
-                    <li>Versioned rollouts, A/B tests and evals at scale</li>
-                    <li>Short-term, long-term and episodic memory</li>
-                </ul>
-                <p class="case-stat"><span class="case-stat-num">200+</span><span class="case-stat-label">agents in production at Jivi</span></p>
-                <div class="case-links">
-                    <a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener" class="link-pill">See Jivi's AI agents →</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="case reveal c-violet" data-focus="yeapp">
-            <a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener" class="case-media phones" aria-label="Yeapp on Google Play">
-                <img src="images/yeapp/icon.png" alt="" class="phones-icon" loading="lazy" decoding="async">
-                <img src="images/yeapp/shot1.webp" alt="Yeapp chat list with voice messages - Talk, don't type" loading="lazy" decoding="async">
-                <img src="images/yeapp/shot2.webp" alt="Yeapp group voice chat" loading="lazy" decoding="async">
-            </a>
-            <div class="case-body">
-                <p class="case-kicker">Voice-first social app · KRAFTON <span class="badge">● Live on Google Play</span></p>
-                <h3 class="case-title"><a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener">Yeapp</a></h3>
-                <p class="case-line">A voice-first messenger for KRAFTON, the PUBG MOBILE company.</p>
-                <ul class="case-points">
-                    <li>Owned the voice AI infrastructure, backend and frontend</li>
-                    <li>From development to the Play Store in under 40 days</li>
-                </ul>
-                <p class="case-stat"><span class="case-stat-num">10K+</span><span class="case-stat-label">downloads on Google Play</span></p>
-                <div class="case-links">
-                    <a href="https://play.google.com/store/apps/details?id=com.kinvrs.yeapp" target="_blank" rel="noopener" class="link-pill">Get it on Google Play →</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="case flip reveal c-coral" data-focus="ludo">
-            <a href="https://play.google.com/store/apps/details?id=com.superking.ludo.star" target="_blank" rel="noopener" class="case-media phones ludo" aria-label="Ludo STAR by Gameberry Labs on Google Play">
-                <img src="images/ludo/icon.png" alt="" class="phones-icon" loading="lazy" decoding="async">
-                <img src="images/ludo/shot1.webp" alt="A Ludo STAR game in progress" loading="lazy" decoding="async">
-                <img src="images/ludo/shot3.webp" alt="Ludo STAR - play with friends" loading="lazy" decoding="async">
-            </a>
-            <div class="case-body">
-                <p class="case-kicker">Real-time voice moderation · Gameberry Labs</p>
-                <h3 class="case-title">Voice Moderation for Ludo STAR</h3>
-                <p class="case-line">Live voice moderation for a game with 100M+ downloads.</p>
-                <ul class="case-points">
-                    <li>A moderation agent joins the room when a player is reported</li>
-                    <li>Four checks per line: keywords, LLM judge, banter, toxicity</li>
-                    <li>Gameberry edits the rulebook and verdicts update instantly</li>
-                </ul>
-                <p class="case-stat"><span class="case-stat-num">100M+</span><span class="case-stat-label">downloads of the game it protects</span></p>
-                <div class="case-links">
-                    <a href="https://play.google.com/store/apps/details?id=com.superking.ludo.star" target="_blank" rel="noopener" class="link-pill">See Ludo STAR →</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="case reveal c-lime" data-focus="sudoviz">
+        <article class="case flip reveal c-lime" data-focus="sudoviz">
             <a href="https://www.sudoviz.com/" target="_blank" rel="noopener" class="case-media screens single sudoviz" aria-label="Sudoviz - open the site">
                 <img src="images/sudoviz/home.jpg" alt="sudoviz.com today: Gaussian, a runtime firewall for AI agents" loading="lazy" decoding="async">
             </a>
             <div class="case-body">
-                <p class="case-kicker">GenAI for code security · Sudoviz (now Gaussian)</p>
+                <p class="case-kicker">AI application security · Sudoviz (now Gaussian)</p>
                 <h3 class="case-title"><a href="https://www.sudoviz.com/" target="_blank" rel="noopener">Sudoviz</a></h3>
-                <p class="case-line">An AI engine that finds and fixes security vulnerabilities in code, for enterprise security teams.</p>
+                <p class="case-line">An AI-assisted application security platform. I owned its engineering end to end.</p>
                 <ul class="case-points">
-                    <li>GenAI code analysis that scans GitHub repositories for vulnerabilities</li>
-                    <li>AI-suggested fixes, explained so developers can act on them</li>
-                    <li>A VS Code extension that brings findings and fixes into the editor</li>
-                    <li>One place to track, manage and resolve issues across every repo</li>
+                    <li>LLM code analysis on Azure AI that scans repos, triages vulnerabilities and suggests fixes</li>
+                    <li>AST-based detection, with audit events streamed to Splunk and Datadog</li>
+                    <li>A VS Code extension to fix issues without leaving the editor</li>
+                    <li>An enterprise control plane: vulnerability inventory, security graph, risk scores</li>
                 </ul>
                 <p class="case-stat"><span class="case-stat-num word">Find → fix</span><span class="case-stat-label">the platform later grew into TuringMind and Gaussian</span></p>
                 <div class="case-links">
@@ -349,14 +401,14 @@
             </div>
         </article>
 
-        <article class="case flip reveal c-coral" data-focus="heart-rate">
+        <article class="case reveal c-coral" data-focus="heart-rate">
             <div class="case-media pulse-art" aria-hidden="true">
                 <div class="hr-window">
                     <div class="hr-head"><span class="hr-dot"></span>Heart rate · phone camera</div>
                     <div class="hr-main"><span class="hr-heart">♥</span><span class="hr-bpm" id="pulseBpm">72</span><span class="hr-unit">BPM</span></div>
                     <svg class="hr-wave" viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M0 40 L30 40 L38 36 L44 40 L58 40 L64 10 L71 62 L78 34 L86 40 L118 40 L126 36 L132 40 L146 40 L152 10 L159 62 L166 34 L174 40 L206 40 L214 36 L220 40 L234 40 L240 10 L247 62 L254 34 L262 40 L300 40"/></svg>
                     <div class="hr-compare">
-                        <span class="hr-chip">Camera <b id="pulseCam">72</b> · Machine <b id="pulseRef">72</b></span>
+                        <span class="hr-chip">Camera <b id="pulseCam">72</b> · Oximeter <b id="pulseRef">72</b></span>
                         <span class="hr-chip ok">✓ match</span>
                     </div>
                 </div>
@@ -367,13 +419,13 @@
                 <p class="case-line">Measures your heart rate from a phone camera, in real time.</p>
                 <ul class="case-points">
                     <li>Reads facial and fingertip signals with MediaPipe</li>
-                    <li>Benchmarked against real BPM machines</li>
+                    <li>Benchmarked against a real pulse oximeter</li>
                 </ul>
                 <p class="case-stat"><span class="case-stat-num">99.2%</span><span class="case-stat-label">accuracy</span></p>
             </div>
         </article>
 
-        <article class="case reveal c-amber" data-focus="pakkaprofile">
+        <article class="case flip reveal c-amber" data-focus="pakkaprofile">
             <a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener" class="case-media pakka" aria-label="PakkaProfile - open the site">
                 <video class="pakka-game" src="images/pakka/game.mp4" poster="images/pakka/game-poster.jpg" autoplay muted loop playsinline aria-label="A candidate's avatar exploring a 3D game world during a PakkaProfile assessment"></video>
                 <video class="pakka-pip" src="images/pakka/analysis.mp4" poster="images/pakka/analysis-poster.jpg" autoplay muted loop playsinline aria-label="Video analysis tagging a candidate's anxiousness, articulation, grammar, energy and fluency"></video>
@@ -381,13 +433,14 @@
             <div class="case-body">
                 <p class="case-kicker">Game-based hiring · PakkaProfile</p>
                 <h3 class="case-title"><a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener">PakkaProfile</a></h3>
-                <p class="case-line">Interviews replaced by games: candidates play, and AI reads 50+ competencies from how they play.</p>
+                <p class="case-line">Interviews replaced by games: candidates play, and the platform scores who they are.</p>
                 <ul class="case-points">
-                    <li>Games and Unity 3D worlds, including a metaverse for hiring</li>
-                    <li>Video and audio analysis of how candidates speak</li>
+                    <li>Shipped 15+ psychometric games in React and React Native</li>
+                    <li>Pipelines that turn gameplay into personality, cognitive and language scores</li>
+                    <li>Real-time navigation in a Unity 3D world, including a metaverse for hiring</li>
                     <li>Improved the system's performance by over 100%</li>
                 </ul>
-                <p class="case-stat"><span class="case-stat-num">1L+</span><span class="case-stat-label">downloads · clients include WhiteHat Jr, Uber, Ola, Swiggy</span></p>
+                <p class="case-stat"><span class="case-stat-num">150K+</span><span class="case-stat-label">users · clients include WhiteHat Jr, Uber, Ola, Swiggy</span></p>
                 <div class="case-links">
                     <button type="button" class="link-pill play-cta" data-youtube="TGEq-XpE5KY" data-title="PakkaProfile · Pakka Assess demo">Watch demo ▶</button>
                     <a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener" class="link-plain">Visit PakkaProfile →</a>
@@ -499,6 +552,30 @@
                     <p class="mini-desc">Races streaming against batch speech on the same audio: speed, billed audio and cost.</p>
                 </div>
             </div>
+
+            <div class="mini reveal c-teal" style="--i:12" data-focus="mcp-server">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="panda" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Echo MCP Server <span class="chip">MCP</span></h3>
+                    <p class="mini-desc">Connect Echo to Claude and build, configure and deploy voice agents in plain language.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-lime" style="--i:13" data-focus="cascade">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="cow" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Cascading Voice Stack <span class="chip">Cost</span></h3>
+                    <p class="mini-desc">Adapts each call's models to what it needs. Cut ANSR Global's voice cost by ~75%.</p>
+                </div>
+            </div>
+
+            <div class="mini reveal c-coral" style="--i:14" data-focus="design-system">
+                <div class="mini-media glyph-stage"><div class="glyph" data-glyph="chick" aria-hidden="true"></div></div>
+                <div class="mini-body">
+                    <h3 class="mini-title">Micro-frontends <span class="chip">Frontend</span></h3>
+                    <p class="mini-desc">A unified design system and micro-frontends built for speed and modularity.</p>
+                </div>
+            </div>
         </div>
         <p class="more-gh">See more on <a href="https://github.com/HUSS41N" target="_blank" rel="noopener">GitHub</a></p>
 
@@ -522,14 +599,14 @@
         </div>
         <div class="about-content">
             <div class="about-bio reveal">
-                <p>I design the systems around the model: <strong>orchestration</strong>, workflows, memory, routing and evals.</p>
-                <p>Then I make them hold up in production: <strong>200+ agents</strong> and an AI doctor at Jivi, an app for <strong>KRAFTON</strong>, and Echo, a platform running <strong>440+ models</strong>.</p>
+                <p>Senior AI Product Engineer with nearly <strong>5 years</strong> building production LLM, voice AI and agentic systems.</p>
+                <p>I led <strong>YEAPP</strong> for KRAFTON India to the Play Store in under 40 days, built <strong>Scribe</strong> for Narayana Health, and owned the agentic platform behind <strong>200+ agents</strong> at Jivi.</p>
             </div>
             <div class="stats-grid reveal">
-                <div class="stat"><div class="stat-number">3.8M</div><div class="stat-label">App downloads</div></div>
-                <div class="stat"><div class="stat-number">80–120K</div><div class="stat-label">Daily active users</div></div>
+                <div class="stat"><div class="stat-number">3.8M+</div><div class="stat-label">App downloads at Jivi</div></div>
+                <div class="stat"><div class="stat-number">80–100K</div><div class="stat-label">Daily active users</div></div>
                 <div class="stat"><div class="stat-number">200+</div><div class="stat-label">Agents in production</div></div>
-                <div class="stat"><div class="stat-number">440+</div><div class="stat-label">Models in Echo</div></div>
+                <div class="stat"><div class="stat-number">96%</div><div class="stat-label">Accuracy on OSCE cases</div></div>
             </div>
         </div>
     </div>
@@ -544,24 +621,24 @@
         </div>
         <div class="skills-rows reveal">
             <div class="skill-row" data-focus="skills-ai">
-                <div class="skill-row-title">Agentic AI &amp; LLMs</div>
-                <p class="skill-row-list"><span class="skill core">Multi-Agent Systems</span> <span class="sep">/</span> <span class="skill core">Agent Orchestration</span> <span class="sep">/</span> <span class="skill core">Agent Workflows</span> <span class="sep">/</span> <span class="skill core">LangGraph</span> <span class="sep">/</span> <span class="skill">LangChain</span> <span class="sep">/</span> <span class="skill">Generative AI</span> <span class="sep">/</span> <span class="skill">Prompt Engineering</span> <span class="sep">/</span> <span class="skill core">RAG</span> <span class="sep">/</span> <span class="skill">Embeddings</span> <span class="sep">/</span> <span class="skill">Vector Databases</span> <span class="sep">/</span> <span class="skill">OpenSearch</span> <span class="sep">/</span> <span class="skill">LLM Memory</span></p>
-            </div>
-            <div class="skill-row" data-focus="skills-scale">
-                <div class="skill-row-title">AI at Scale</div>
-                <p class="skill-row-list"><span class="skill core">Model Routing</span> <span class="sep">/</span> <span class="skill core">Model Benchmarking</span> <span class="sep">/</span> <span class="skill core">LLM Evaluation</span> <span class="sep">/</span> <span class="skill">A/B Rollouts</span> <span class="sep">/</span> <span class="skill">Agent Versioning</span> <span class="sep">/</span> <span class="skill">Monitoring</span> <span class="sep">/</span> <span class="skill">Tracing</span> <span class="sep">/</span> <span class="skill">Observability</span> <span class="sep">/</span> <span class="skill">Cost Optimization</span> <span class="sep">/</span> <span class="skill">Local and Hosted Models</span></p>
+                <div class="skill-row-title">AI / LLM</div>
+                <p class="skill-row-list"><span class="skill core">LangChain</span> <span class="sep">/</span> <span class="skill core">LangGraph</span> <span class="sep">/</span> <span class="skill core">MCP</span> <span class="sep">/</span> <span class="skill core">Claude</span> <span class="sep">/</span> <span class="skill core">Multi-Agent Systems</span> <span class="sep">/</span> <span class="skill">Agent Workflows</span> <span class="sep">/</span> <span class="skill">Tool Calling</span> <span class="sep">/</span> <span class="skill core">RAG</span> <span class="sep">/</span> <span class="skill">Vector Search</span> <span class="sep">/</span> <span class="skill">Embeddings</span> <span class="sep">/</span> <span class="skill">OpenSearch</span> <span class="sep">/</span> <span class="skill">Generative AI</span> <span class="sep">/</span> <span class="skill">Prompt Engineering</span> <span class="sep">/</span> <span class="skill core">LLM Evaluation</span> <span class="sep">/</span> <span class="skill">Tracing &amp; Observability</span></p>
             </div>
             <div class="skill-row" data-focus="skills-voice">
                 <div class="skill-row-title">Voice AI</div>
-                <p class="skill-row-list"><span class="skill core">Voice Agents</span> <span class="sep">/</span> <span class="skill core">Real-Time Voice AI</span> <span class="sep">/</span> <span class="skill core">WebRTC</span> <span class="sep">/</span> <span class="skill">Speech Workflows</span> <span class="sep">/</span> <span class="skill">STT &amp; TTS</span> <span class="sep">/</span> <span class="skill">Voice Moderation</span></p>
-            </div>
-            <div class="skill-row" data-focus="skills-frontend">
-                <div class="skill-row-title">Languages &amp; Frontend</div>
-                <p class="skill-row-list"><span class="skill core">TypeScript</span> <span class="sep">/</span> <span class="skill core">JavaScript</span> <span class="sep">/</span> <span class="skill core">Python</span> <span class="sep">/</span> <span class="skill">C++</span> <span class="sep">/</span> <span class="skill core">React.js</span> <span class="sep">/</span> <span class="skill core">Next.js</span> <span class="sep">/</span> <span class="skill">React Native</span> <span class="sep">/</span> <span class="skill">Micro-frontends</span> <span class="sep">/</span> <span class="skill">Design Systems</span></p>
+                <p class="skill-row-list"><span class="skill core">Real-Time Voice Agents</span> <span class="sep">/</span> <span class="skill">Voice Moderation</span> <span class="sep">/</span> <span class="skill core">Speaker Diarization</span> <span class="sep">/</span> <span class="skill">Ambient Audio</span> <span class="sep">/</span> <span class="skill core">STT / TTS Pipelines</span> <span class="sep">/</span> <span class="skill core">WebRTC</span> <span class="sep">/</span> <span class="skill">Model Routing</span> <span class="sep">/</span> <span class="skill">Model Benchmarking</span> <span class="sep">/</span> <span class="skill">Local &amp; Hosted Inference</span></p>
             </div>
             <div class="skill-row" data-focus="skills-backend">
-                <div class="skill-row-title">Backend &amp; Infrastructure</div>
-                <p class="skill-row-list"><span class="skill core">Node.js</span> <span class="sep">/</span> <span class="skill">Express.js</span> <span class="sep">/</span> <span class="skill core">FastAPI</span> <span class="sep">/</span> <span class="skill">Flask</span> <span class="sep">/</span> <span class="skill">Django</span> <span class="sep">/</span> <span class="skill">REST APIs</span> <span class="sep">/</span> <span class="skill core">WebSockets</span> <span class="sep">/</span> <span class="skill">MongoDB</span> <span class="sep">/</span> <span class="skill core">Docker</span> <span class="sep">/</span> <span class="skill">Kubernetes</span> <span class="sep">/</span> <span class="skill core">AWS</span> <span class="sep">/</span> <span class="skill">System Design</span> <span class="sep">/</span> <span class="skill">Distributed Systems</span></p>
+                <div class="skill-row-title">Languages &amp; Backend</div>
+                <p class="skill-row-list"><span class="skill core">Python</span> <span class="sep">/</span> <span class="skill core">TypeScript</span> <span class="sep">/</span> <span class="skill">JavaScript</span> <span class="sep">/</span> <span class="skill">C++</span> <span class="sep">/</span> <span class="skill core">Node.js</span> <span class="sep">/</span> <span class="skill core">NestJS</span> <span class="sep">/</span> <span class="skill">Express.js</span> <span class="sep">/</span> <span class="skill core">FastAPI</span> <span class="sep">/</span> <span class="skill">Flask</span> <span class="sep">/</span> <span class="skill">Django</span> <span class="sep">/</span> <span class="skill">REST APIs</span> <span class="sep">/</span> <span class="skill">WebSockets</span> <span class="sep">/</span> <span class="skill">MongoDB</span></p>
+            </div>
+            <div class="skill-row" data-focus="skills-frontend">
+                <div class="skill-row-title">Frontend</div>
+                <p class="skill-row-list"><span class="skill core">React.js</span> <span class="sep">/</span> <span class="skill core">Next.js</span> <span class="sep">/</span> <span class="skill core">React Native</span> <span class="sep">/</span> <span class="skill">Micro-frontends</span> <span class="sep">/</span> <span class="skill">Design Systems</span></p>
+            </div>
+            <div class="skill-row" data-focus="skills-infra">
+                <div class="skill-row-title">Infra &amp; Core</div>
+                <p class="skill-row-list"><span class="skill core">Docker</span> <span class="sep">/</span> <span class="skill core">Kubernetes</span> <span class="sep">/</span> <span class="skill core">AWS</span> <span class="sep">/</span> <span class="skill">Azure AI</span> <span class="sep">/</span> <span class="skill">Microservices</span> <span class="sep">/</span> <span class="skill core">System Design</span> <span class="sep">/</span> <span class="skill">Distributed Systems</span> <span class="sep">/</span> <span class="skill">Real-Time Systems</span></p>
             </div>
         </div>
     </div>
@@ -577,32 +654,34 @@
         <div class="timeline reveal">
             <div class="timeline-item" data-focus="tph">
                 <div class="timeline-head">
-                    <h3 class="timeline-role">Product Engineer</h3>
+                    <h3 class="timeline-role">Senior AI Product Engineer</h3>
                     <span class="timeline-dates">Apr 2026 - Present</span>
-                    <span class="tl-chip">Agentic &amp; voice AI</span>
+                    <span class="tl-chip">Voice AI</span>
                 </div>
-                <div class="timeline-company">The Product Highway</div>
-                <p class="timeline-about">Builds AI and voice products for clients like KRAFTON and Gameberry Labs, on its own platform, Echo.</p>
+                <div class="timeline-company">The Product Highway, Bengaluru</div>
+                <p class="timeline-about">Builds AI and voice products for clients like KRAFTON India, Narayana Health and Gameberry Labs, on its own platform, Echo.</p>
                 <ul class="tl-points">
-                    <li>Built <a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a>: agents, voice agents and workflows on 440+ models</li>
-                    <li>Shipped Yeapp for KRAFTON in under 40 days</li>
-                    <li>Cut a client's voice cost from ₹4–5 to ₹0.7–1.3 a minute</li>
-                    <li>Delivered Ludo STAR voice moderation, healthcare intake and AI interviewing</li>
+                    <li>Led YEAPP for KRAFTON India with a 4-engineer team: live on Google Play in under 40 days</li>
+                    <li>Architected <a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a> and its MCP server: 440+ models from 88+ vendors</li>
+                    <li>Built Scribe for Narayana Health and voice moderation for Gameberry Labs' Ludo Star</li>
+                    <li>Cut ANSR Global's voice cost by ~75% with a cascading system</li>
+                    <li>Shipped production voice agents for healthcare intake and AI interviewing</li>
                 </ul>
             </div>
             <div class="timeline-item" data-focus="jivi">
                 <div class="timeline-head">
                     <h3 class="timeline-role">Software Development Engineer II</h3>
                     <span class="timeline-dates">May 2024 - Apr 2026</span>
-                    <span class="tl-chip">Health AI</span>
+                    <span class="tl-chip">Agentic AI</span>
                 </div>
                 <div class="timeline-company"><a href="https://jivi.ai" target="_blank" rel="noopener">Jivi AI</a>, Gurugram</div>
-                <p class="timeline-about">AI healthcare: an AI doctor and medical AI agents in an app with 3.8M downloads, used in 170+ countries.</p>
+                <p class="timeline-about">AI healthcare: an AI doctor and medical AI agents in an app with 3.8M+ downloads.</p>
                 <ul class="tl-points">
-                    <li>Built the end-to-end AI systems behind Dr. Jivi: 80–120K people talk to it daily</li>
-                    <li>Built Agent Studio: 200+ agents in production</li>
-                    <li>Built the Health Coach, agent memory, eval pipelines and A/B rollouts</li>
-                    <li>Camera heart-rate monitoring at 99.2% accuracy</li>
+                    <li>Owned the agentic AI platform: 200+ agents in production, 80–100K daily users</li>
+                    <li>Multi-agent workflows on LangGraph with MCP tool calling and auto-generated APIs</li>
+                    <li>Real-time evals reaching 96% accuracy on OSCE clinical cases</li>
+                    <li>Agent memory, versioning, A/B rollouts and semantic search</li>
+                    <li>Camera heart-rate monitoring at 99.2% accuracy against a pulse oximeter</li>
                 </ul>
             </div>
             <div class="timeline-item" data-focus="sudoviz-role">
@@ -612,11 +691,11 @@
                     <span class="tl-chip">AI security</span>
                 </div>
                 <div class="timeline-company"><a href="https://www.sudoviz.com/" target="_blank" rel="noopener">Sudoviz</a>, California (Remote)</div>
-                <p class="timeline-about">An AI security platform that finds and fixes vulnerabilities in code for enterprise teams. Now Gaussian.</p>
+                <p class="timeline-about">An AI-assisted application security platform for enterprise teams. Now Gaussian.</p>
                 <ul class="tl-points">
-                    <li>GenAI code analysis and fixes for enterprise security teams</li>
-                    <li>A VS Code extension that surfaces and fixes vulnerabilities in the editor</li>
-                    <li>Tracking and resolving vulnerabilities across repositories</li>
+                    <li>Owned engineering end to end: backend services, APIs, integrations and developer tools</li>
+                    <li>LLM code analysis on Azure AI and AST-based vulnerability detection</li>
+                    <li>A VS Code extension and the enterprise control plane dashboard</li>
                 </ul>
             </div>
             <div class="timeline-item" data-focus="pakka">
@@ -626,17 +705,17 @@
                     <span class="tl-chip">Games &amp; Unity 3D</span>
                 </div>
                 <div class="timeline-company"><a href="https://pakkaprofilenewwebsite.vercel.app/" target="_blank" rel="noopener">PakkaProfile</a>, Bengaluru</div>
-                <p class="timeline-about">Game-based hiring: candidates play games instead of interviews, and AI assesses 50+ competencies.</p>
+                <p class="timeline-about">Game-based hiring: candidates play games instead of interviews, and the platform scores 50+ competencies.</p>
                 <ul class="tl-points">
-                    <li>Games and Unity 3D, including a metaverse for hiring</li>
-                    <li>Video and audio data processing for assessments</li>
-                    <li>1L+ downloads; clients include WhiteHat Jr, Uber, Ola and Swiggy</li>
+                    <li>Shipped 15+ psychometric games for 150K+ users</li>
+                    <li>Microservices and pipelines that score personality, cognition and language</li>
+                    <li>Real-time navigation in Unity 3D, including a metaverse for hiring</li>
                     <li>Improved the system's performance by over 100%</li>
                 </ul>
             </div>
             <div class="timeline-item" data-focus="mca">
                 <div class="timeline-head">
-                    <h3 class="timeline-role">Master of Computer Application</h3>
+                    <h3 class="timeline-role">Master of Computer Applications (MCA)</h3>
                     <span class="timeline-dates">2020 - 2022</span>
                     <span class="tl-chip">Education</span>
                 </div>
@@ -644,7 +723,7 @@
             </div>
             <div class="timeline-item" data-focus="bca">
                 <div class="timeline-head">
-                    <h3 class="timeline-role">Bachelor of Computer Application</h3>
+                    <h3 class="timeline-role">Bachelor of Computer Applications (BCA)</h3>
                     <span class="timeline-dates">2017 - 2020</span>
                     <span class="tl-chip">Education</span>
                 </div>
@@ -659,7 +738,7 @@
     <div class="container">
         <div class="reveal">
             <p class="section-label"><span class="idx">06</span> Contact</p>
-            <p class="contact-status"><span class="pulse" aria-hidden="true"></span>Open to conversations · India or remote</p>
+            <p class="contact-status"><span class="pulse" aria-hidden="true"></span>Open to conversations · Bengaluru or remote</p>
             <h2 class="contact-title">Let's build something that <em>scales</em>.</h2>
             <p class="cta-tagline">Need someone to take an agent or voice product from idea to thousands of daily users? Let's talk.</p>
             <div class="contact-links">
@@ -677,7 +756,7 @@
 
 <footer>
     <div class="container">
-        <p>© 2026 Md Hussain · India <span class="footer-clock" id="tlvClock" aria-hidden="true"></span></p>
+        <p>© 2026 Md Hussain · Bengaluru <span class="footer-clock" id="tlvClock" aria-hidden="true"></span></p>
         <p class="footer-sign">Built and shipped in <em>code</em>.</p>
     </div>
 </footer>
@@ -725,10 +804,13 @@
     koala:  ['###......###','####....####','############','############','###..##..###','###..##..###','#####..#####','####....####','####....####','#####..#####','.##########.','..########..'],
     frog:   ['............','.###....###.','##.##..##.##','############','############','############','#..........#','##........##','.##########.','..########..','.##......##.','###......###'],
     penguin:['....####....','..########..','.###....###.','.##.#..#.##.','.##..##..##.','###......###','##........##','##........##','.#........#.','.##......##.','..########..','.###....###.'],
+    panda:  ['.##......##.','####....####','.##########.','############','##...##...##','##.#.##.#.##','##...##...##','############','#####..#####','####.##.####','.##########.','..########..'],
+    cow:    ['#..........#','##.######.##','.##########.','############','###..##..###','###..##..###','############','.##########.','.###....###.','.##.#..#.##.','.###....###.','..########..'],
+    chick:  ['.....##.....','...######...','..########..','..#.####.#..','..########..','.####..####.','.###....###.','.##########.','############','.##########.','..##....##..','..#......#..'],
     bird:   ['....####....','...######...','..##.#####..','..#########.','..######.###','.#######....','##########..','##########..','.########...','..######....','...#..#.....','..##.##.....']
   };
   // rows holding the eyes (the OFF pixels that move); [] = this face has no movable eyes
-  var EYES = { frog: [], penguin: [], owl: [5], bird: [2], pig: [4,5], koala: [4,5] };
+  var EYES = { frog: [], penguin: [], owl: [5], bird: [2], pig: [4,5], koala: [4,5], panda: [5], cow: [4,5], chick: [3] };
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var N = 12, glyphs = [];
 
@@ -835,6 +917,15 @@
   var ref = document.getElementById('pulseRef'), cam = document.getElementById('pulseCam');
   function tick(){ if (!on) return; var v = vals[(Math.random() * vals.length) | 0]; el.textContent = v; if (ref) ref.textContent = v; if (cam) cam.textContent = v; t = setTimeout(tick, 1400); }
   new IntersectionObserver(function(es){ on = es[0].isIntersecting; clearTimeout(t); if (on) tick(); }).observe(el);
+})();
+
+/* Scribe card: the session clock ticks while it's on screen. */
+(function(){
+  var el = document.getElementById('scribeTime'); if (!el) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sec = 24 * 60 + 17, t = null, on = false;
+  function tick(){ if (!on) return; sec++; el.textContent = Math.floor(sec / 60) + ':' + ('0' + sec % 60).slice(-2); t = setTimeout(tick, 1000); }
+  new IntersectionObserver(function(es){ on = es[0].isIntersecting; clearTimeout(t); if (on) t = setTimeout(tick, 1000); }).observe(el);
 })();
 
 /* Play-video CTA: opens the full clip, with sound and controls, in a player. */
