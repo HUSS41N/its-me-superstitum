@@ -94,28 +94,40 @@
     .tl-points li::before { background:#8a7bff; }
     button.link-pill { border:0; cursor:pointer; font-family:inherit; }
 
-    /* Scribe: a session window - who's speaking, and the note drafting itself. */
+    /* Scribe: ambient listening - one device in the room, every voice picked out. */
     .case-media.scribe-art { display:grid; place-items:center; background: radial-gradient(100% 90% at 0% 0%, #5eead4, #0f766e 75%); border-color:transparent; }
-    .sc-window { width:76%; padding:clamp(14px,1.8vw,22px); border-radius:16px; background:#fff; color:#1d1d22; box-shadow:0 22px 50px rgba(0,60,50,.35); display:grid; gap:clamp(8px,1vw,12px); }
+    .sc-window { width:84%; padding:clamp(14px,1.7vw,20px); border-radius:16px; background:#fff; color:#1d1d22; box-shadow:0 22px 50px rgba(0,60,50,.35); display:grid; gap:clamp(8px,1vw,12px); }
     .sc-head { display:flex; align-items:center; gap:8px; font:600 12px/1 Inter, system-ui, sans-serif; color:#6b6b76; }
     .sc-rec { width:8px; height:8px; border-radius:50%; background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.18); animation: rec 1.4s ease-in-out infinite; }
     .sc-time { margin-left:auto; font-family:"JetBrains Mono", ui-monospace, monospace; font-weight:500; color:#8a8a94; font-variant-numeric: tabular-nums; }
-    .sc-lines { display:grid; gap:7px; }
-    .sc-line { display:flex; align-items:center; gap:10px; }
-    .sc-who { flex:0 0 72px; font:600 11px/1 Inter, system-ui, sans-serif; padding:5px 8px; border-radius:999px; text-align:center; }
-    .sc-who.a { background:#e0f2fe; color:#0369a1; } .sc-who.b { background:#ede9fe; color:#6d28d9; }
-    .sc-bar { display:block; height:8px; border-radius:999px; background:#e7e7ec; }
-    .sc-bar.soft { background:#eef6f4; height:7px; }
-    .sc-wave { display:inline-flex; gap:2px; align-items:center; height:14px; }
-    .sc-wave i { width:3px; border-radius:2px; background:#6d28d9; animation: wave 0.9s ease-in-out infinite; }
-    .sc-wave i:nth-child(1){height:5px;animation-delay:0s} .sc-wave i:nth-child(2){height:11px;animation-delay:.12s} .sc-wave i:nth-child(3){height:7px;animation-delay:.24s} .sc-wave i:nth-child(4){height:13px;animation-delay:.36s} .sc-wave i:nth-child(5){height:6px;animation-delay:.48s}
-    .sc-note { display:grid; gap:6px; padding-top:10px; border-top:1px solid #eee; }
-    .sc-note-head { display:flex; justify-content:space-between; font:600 12px/1 Inter, system-ui, sans-serif; color:#0f766e; margin-bottom:2px; }
+    .sc-body { display:grid; grid-template-columns: 40% 1fr; gap:clamp(10px,1.4vw,18px); align-items:center; }
+    .sc-room { position:relative; aspect-ratio:1; border-radius:50%; background: radial-gradient(circle, #f0fdfa 0%, #f6f7f9 70%); }
+    .sc-ring { position:absolute; inset:34%; border-radius:50%; border:1.5px solid rgba(15,118,110,.35); animation: ripple 2.4s ease-out infinite; }
+    .sc-ring.r2 { animation-delay:.8s; } .sc-ring.r3 { animation-delay:1.6s; }
+    .sc-mic { position:absolute; inset:36%; border-radius:50%; background:#0f766e; color:#fff; display:grid; place-items:center; box-shadow:0 6px 16px rgba(15,118,110,.35); }
+    .sc-mic svg { width:46%; height:46%; }
+    .sc-p { position:absolute; width:22%; aspect-ratio:1; border-radius:50%; display:grid; place-items:center; font:700 clamp(9px,1vw,12px)/1 Inter, system-ui, sans-serif; color:#fff; transform:translate(-50%,-50%); transition: transform .25s, box-shadow .25s; }
+    .sc-p.s1 { left:50%; top:9%; background:#0ea5e9; } .sc-p.s2 { left:91%; top:50%; background:#8b5cf6; }
+    .sc-p.s3 { left:50%; top:91%; background:#f59e0b; } .sc-p.s4 { left:9%; top:50%; background:#ec4899; }
+    .sc-p.on { transform:translate(-50%,-50%) scale(1.18); box-shadow:0 0 0 4px rgba(255,255,255,.9), 0 0 0 7px currentColor; }
+    .sc-p.s1.on { color:rgba(14,165,233,.35); } .sc-p.s2.on { color:rgba(139,92,246,.35); } .sc-p.s3.on { color:rgba(245,158,11,.35); } .sc-p.s4.on { color:rgba(236,72,153,.35); }
+    .sc-p.on { -webkit-text-fill-color:#fff; }
+    .sc-side { display:grid; gap:clamp(8px,1vw,12px); min-width:0; }
+    .sc-lines { display:grid; gap:6px; }
+    .sc-line { display:flex; align-items:center; gap:8px; transition: opacity .3s; opacity:.55; }
+    .sc-line.on { opacity:1; }
+    .sc-who { flex:0 0 auto; font:600 10.5px/1 Inter, system-ui, sans-serif; padding:5px 8px; border-radius:999px; white-space:nowrap; }
+    .sc-who.s1 { background:#e0f2fe; color:#0369a1; } .sc-who.s2 { background:#ede9fe; color:#6d28d9; }
+    .sc-who.s3 { background:#fef3c7; color:#b45309; } .sc-who.s4 { background:#fce7f3; color:#be185d; }
+    .sc-bar { display:block; height:7px; border-radius:999px; background:#e7e7ec; flex:0 1 auto; min-width:20px; }
+    .sc-bar.soft { background:#e6f4f1; height:6px; }
+    .sc-note { display:grid; gap:6px; padding-top:9px; border-top:1px solid #eee; }
+    .sc-note-head { display:flex; justify-content:space-between; font:600 11.5px/1 Inter, system-ui, sans-serif; color:#0f766e; margin-bottom:2px; }
     .sc-note-head span { color:#8a8a94; font-weight:500; }
     @keyframes rec { 50% { opacity:.35; } }
-    @keyframes wave { 50% { transform:scaleY(.4); } }
-    @media (prefers-reduced-motion: reduce) { .sc-rec, .sc-wave i { animation:none; } }
-    @media (max-width:640px) { .sc-window { width:88%; padding:12px 14px; gap:8px; } .sc-who { flex-basis:62px; font-size:10px; padding:4px 6px; } .sc-lines { gap:5px; } .sc-line:nth-child(3), .sc-note .sc-bar:last-child { display:none; } .sc-note { padding-top:8px; gap:5px; } }
+    @keyframes ripple { from { transform:scale(1); opacity:.9; } to { transform:scale(2.5); opacity:0; } }
+    @media (prefers-reduced-motion: reduce) { .sc-rec, .sc-ring { animation:none; } .sc-ring { display:none; } }
+    @media (max-width:640px) { .sc-window { width:90%; padding:12px; gap:8px; } .sc-body { grid-template-columns: 36% 1fr; gap:10px; } .sc-line:nth-child(4), .sc-note .sc-bar:last-child { display:none; } .sc-who { font-size:9.5px; padding:4px 6px; } .sc-lines { gap:5px; } }
 
     /* Heart-rate: a clean readout window, like a screen from the app. */
     .case-media.pulse-art { display:grid; place-items:center; background: radial-gradient(100% 90% at 0% 0%, #ff8fa3, #c9184a 75%); border-color:transparent; }
@@ -195,9 +207,9 @@
     <div class="hero-bg"></div>
     <div class="container">
         <div class="hero-content">
-            <p class="hero-label">Senior AI Product Engineer <span class="dot">·</span> Voice AI <span class="dot">·</span> Agentic Systems <span class="dot">·</span> <span class="loc">Bengaluru</span></p>
-            <h1>I build agentic AI systems that run <em>at scale</em><span class="accent-dot">.</span><span class="hero-wavy-wrap" aria-hidden="true"><svg width="92" height="34" viewBox="0 0 120 40" fill="none"><path id="heroWaveThick" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGradThick)" stroke-width="7" stroke-linecap="round" fill="none"/><path id="heroWaveThin" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGrad)" stroke-width="3" stroke-linecap="round" fill="none"/><g id="heroWavePen" opacity="0"><g transform="scale(2) translate(-7,-14.3) rotate(-30,8,8)"><path d="M12 3l1.2-1.2a1.5 1.5 0 012.1 2.1L7.5 11.7a3 3 0 01-1.3.8L4 13l.5-2.2a3 3 0 01.8-1.3L12 3z" stroke="url(#heroWaveGrad)" stroke-width="0.8" stroke-linecap="round" fill="none"/></g></g><defs><linearGradient id="heroWaveGrad" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff"/><stop offset="50%" stop-color="#c4b9ff"/><stop offset="100%" stop-color="#8a7bff"/></linearGradient><linearGradient id="heroWaveGradThick" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff" stop-opacity="0"/><stop offset="50%" stop-color="#b9afff" stop-opacity="0.45"/><stop offset="100%" stop-color="#8a7bff" stop-opacity="0.85"/></linearGradient></defs></svg></span></h1>
-            <p class="hero-desc">Nearly 5 years building production LLM, voice AI and agentic systems, full stack, from architecture to the people using them.</p>
+            <p class="hero-label">Senior AI Product Engineer <span class="dot">·</span> <span class="loc">Bengaluru</span></p>
+            <h1>I build voice and agentic AI that runs <em>at scale</em><span class="accent-dot">.</span><span class="hero-wavy-wrap" aria-hidden="true"><svg width="92" height="34" viewBox="0 0 120 40" fill="none"><path id="heroWaveThick" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGradThick)" stroke-width="7" stroke-linecap="round" fill="none"/><path id="heroWaveThin" d="M2 30 Q15 10, 30 25 Q45 40, 60 20 Q75 0, 90 20 Q105 40, 118 15" stroke="url(#heroWaveGrad)" stroke-width="3" stroke-linecap="round" fill="none"/><g id="heroWavePen" opacity="0"><g transform="scale(2) translate(-7,-14.3) rotate(-30,8,8)"><path d="M12 3l1.2-1.2a1.5 1.5 0 012.1 2.1L7.5 11.7a3 3 0 01-1.3.8L4 13l.5-2.2a3 3 0 01.8-1.3L12 3z" stroke="url(#heroWaveGrad)" stroke-width="0.8" stroke-linecap="round" fill="none"/></g></g><defs><linearGradient id="heroWaveGrad" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff"/><stop offset="50%" stop-color="#c4b9ff"/><stop offset="100%" stop-color="#8a7bff"/></linearGradient><linearGradient id="heroWaveGradThick" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8a7bff" stop-opacity="0"/><stop offset="50%" stop-color="#b9afff" stop-opacity="0.45"/><stop offset="100%" stop-color="#8a7bff" stop-opacity="0.85"/></linearGradient></defs></svg></span></h1>
+            <p class="hero-desc">Nearly 5 years shipping LLM, voice AI and agentic systems end to end, for KRAFTON India, Narayana Health, Jivi AI and Gameberry Labs.</p>
             <div class="hero-links">
                 <a href="mailto:hussainakhtar1111@gmail.com?subject=Hello%20Hussain" class="btn btn-primary">Email me</a>
                 <a href="Md-Hussain-Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">
@@ -206,7 +218,7 @@
                 </a>
                 <span class="hero-minor">or find me on <a href="https://github.com/HUSS41N" target="_blank" rel="noopener">GitHub</a> / <a href="https://linkedin.com/in/md-hussain-baa178136" target="_blank" rel="noopener">LinkedIn</a></span>
             </div>
-            <p class="hero-proof">YEAPP for KRAFTON India <span class="dot">·</span> 200+ agents in production at Jivi <span class="dot">·</span> 440+ models in Echo</p>
+            <p class="hero-proof">200+ agents in production <span class="dot">·</span> 3.8M+ app downloads <span class="dot">·</span> 440+ models in Echo</p>
             <p class="hero-now"><span class="now-tag">Now</span>building <a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a> at The Product Highway <span class="dot">·</span> my own AI SaaS, <a href="https://agentsman.vercel.app/" target="_blank" rel="noopener">Agentsman</a></p>
         </div>
     </div>
@@ -269,35 +281,7 @@
             </div>
         </article>
 
-        <article class="case reveal c-teal" data-focus="scribe">
-            <div class="case-media scribe-art" aria-hidden="true">
-                <div class="sc-window">
-                    <div class="sc-head"><span class="sc-rec"></span>Session · listening to the room <span class="sc-time" id="scribeTime">24:17</span></div>
-                    <div class="sc-lines">
-                        <div class="sc-line"><span class="sc-who a">Therapist</span><span class="sc-bar" style="width:78%"></span></div>
-                        <div class="sc-line"><span class="sc-who b">Client</span><span class="sc-bar" style="width:62%"></span></div>
-                        <div class="sc-line"><span class="sc-who a">Therapist</span><span class="sc-bar" style="width:70%"></span></div>
-                        <div class="sc-line live"><span class="sc-who b">Client</span><span class="sc-bar" style="width:44%"></span><span class="sc-wave"><i></i><i></i><i></i><i></i><i></i></span></div>
-                    </div>
-                    <div class="sc-note">
-                        <div class="sc-note-head">Clinical note <span>drafting…</span></div>
-                        <span class="sc-bar soft" style="width:92%"></span><span class="sc-bar soft" style="width:80%"></span><span class="sc-bar soft" style="width:58%"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="case-body">
-                <p class="case-kicker">AI therapy scribe · Narayana Health</p>
-                <h3 class="case-title">Scribe</h3>
-                <p class="case-line">Listens to a therapy session and writes the clinical note, so the therapist can stay with the person.</p>
-                <ul class="case-points">
-                    <li>Speaker diarization: it knows who said what</li>
-                    <li>Listens to the room, so nobody holds a phone or wears a mic</li>
-                    <li>Drafts clinical notes and keeps session context and records secure</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="case flip reveal c-coral" data-focus="ludo">
+        <article class="case reveal c-coral" data-focus="ludo">
             <a href="https://play.google.com/store/apps/details?id=com.superking.ludo.star" target="_blank" rel="noopener" class="case-media phones ludo" aria-label="Ludo STAR by Gameberry Labs on Google Play">
                 <img src="images/ludo/icon.png" alt="" class="phones-icon" loading="lazy" decoding="async">
                 <img src="images/ludo/shot1.webp" alt="A Ludo STAR game in progress" loading="lazy" decoding="async">
@@ -319,7 +303,7 @@
             </div>
         </article>
 
-        <article class="case reveal c-teal" data-focus="agent-studio">
+        <article class="case flip reveal c-teal" data-focus="agent-studio">
             <a href="https://www.jivi.ai/ai-agents" target="_blank" rel="noopener" class="case-media screens agentsman" aria-label="Jivi's AI agents">
                 <img src="images/agentsman/home.jpg" alt="Agent workflow builder: build AI workflows without code" loading="lazy" decoding="async">
                 <img src="images/agentsman/features.jpg" alt="Visual workflow designer, AI agent orchestration and real-time execution" loading="lazy" decoding="async">
@@ -340,7 +324,7 @@
             </div>
         </article>
 
-        <article class="case flip reveal c-coral" data-focus="jivi-scale">
+        <article class="case reveal c-coral" data-focus="jivi-scale">
             <a href="https://jivi.ai" target="_blank" rel="noopener" class="case-media clip white" aria-label="Jivi AI - talk to Dr. Jivi">
                 <video src="images/jivi/dr-jivi.mp4" poster="images/jivi/dr-jivi-poster.jpg" autoplay muted loop playsinline aria-label="The Jivi app: tapping Talk to Dr. Jivi opens a live voice consult with the AI doctor"></video>
             </a>
@@ -360,7 +344,7 @@
             </div>
         </article>
 
-        <article class="case reveal c-amber" data-focus="health-coach">
+        <article class="case flip reveal c-amber" data-focus="health-coach">
             <div class="case-media phones peach">
                 <video src="images/jivi/health-coach.mp4" poster="images/jivi/health-coach-poster.jpg" autoplay muted loop playsinline aria-label="Jivi Health Coach: asking for a health overview, activity cards, and a blood report being analysed"></video>
             </div>
@@ -380,7 +364,7 @@
             </div>
         </article>
 
-        <article class="case flip reveal c-lime" data-focus="sudoviz">
+        <article class="case reveal c-lime" data-focus="sudoviz">
             <a href="https://www.sudoviz.com/" target="_blank" rel="noopener" class="case-media screens single sudoviz" aria-label="Sudoviz - open the site">
                 <img src="images/sudoviz/home.jpg" alt="sudoviz.com today: Gaussian, a runtime firewall for AI agents" loading="lazy" decoding="async">
             </a>
@@ -397,6 +381,46 @@
                 <p class="case-stat"><span class="case-stat-num word">Find → fix</span><span class="case-stat-label">the platform later grew into TuringMind and Gaussian</span></p>
                 <div class="case-links">
                     <a href="https://www.sudoviz.com/" target="_blank" rel="noopener" class="link-pill">Visit Sudoviz →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="case flip reveal c-teal" data-focus="scribe">
+            <div class="case-media scribe-art" aria-hidden="true">
+                <div class="sc-window">
+                    <div class="sc-head"><span class="sc-rec"></span>Listening to the room <span class="sc-time" id="scribeTime">24:17</span></div>
+                    <div class="sc-body">
+                        <div class="sc-room">
+                            <span class="sc-ring r1"></span><span class="sc-ring r2"></span><span class="sc-ring r3"></span>
+                            <span class="sc-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+                            <span class="sc-p s1" data-s="1">1</span><span class="sc-p s2" data-s="2">2</span><span class="sc-p s3" data-s="3">3</span><span class="sc-p s4" data-s="4">4</span>
+                        </div>
+                        <div class="sc-side">
+                            <div class="sc-lines">
+                                <div class="sc-line" data-s="1"><span class="sc-who s1">Speaker 1</span><span class="sc-bar" style="width:74%"></span></div>
+                                <div class="sc-line" data-s="3"><span class="sc-who s3">Speaker 3</span><span class="sc-bar" style="width:58%"></span></div>
+                                <div class="sc-line" data-s="2"><span class="sc-who s2">Speaker 2</span><span class="sc-bar" style="width:66%"></span></div>
+                                <div class="sc-line" data-s="4"><span class="sc-who s4">Speaker 4</span><span class="sc-bar" style="width:46%"></span></div>
+                            </div>
+                            <div class="sc-note">
+                                <div class="sc-note-head">Clinical note <span>drafting…</span></div>
+                                <span class="sc-bar soft" style="width:92%"></span><span class="sc-bar soft" style="width:76%"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-body">
+                <p class="case-kicker">AI therapy scribe · <a href="https://www.narayanahealth.org/" target="_blank" rel="noopener">Narayana Health</a></p>
+                <h3 class="case-title">Scribe</h3>
+                <p class="case-line">Listens to the whole room during a therapy session and writes the clinical note.</p>
+                <ul class="case-points">
+                    <li>Ambient listening: anyone in the room can speak, no mics to pass around</li>
+                    <li>Speaker diarization separates every voice and knows who said what</li>
+                    <li>Drafts clinical notes and keeps session context and records secure</li>
+                </ul>
+                <div class="case-links">
+                    <a href="https://www.narayanahealth.org/" target="_blank" rel="noopener" class="link-pill">Visit Narayana Health →</a>
                 </div>
             </div>
         </article>
@@ -600,7 +624,7 @@
         <div class="about-content">
             <div class="about-bio reveal">
                 <p>Senior AI Product Engineer with nearly <strong>5 years</strong> building production LLM, voice AI and agentic systems.</p>
-                <p>I led <strong>YEAPP</strong> for KRAFTON India to the Play Store in under 40 days, built <strong>Scribe</strong> for Narayana Health, and owned the agentic platform behind <strong>200+ agents</strong> at Jivi.</p>
+                <p>I led <strong>YEAPP</strong> for KRAFTON India to the Play Store in under 40 days, built <strong>Scribe</strong> for <a href="https://www.narayanahealth.org/" target="_blank" rel="noopener">Narayana Health</a>, and owned the agentic platform behind <strong>200+ agents</strong> at Jivi.</p>
             </div>
             <div class="stats-grid reveal">
                 <div class="stat"><div class="stat-number">3.8M+</div><div class="stat-label">App downloads at Jivi</div></div>
@@ -663,7 +687,7 @@
                 <ul class="tl-points">
                     <li>Led YEAPP for KRAFTON India with a 4-engineer team: live on Google Play in under 40 days</li>
                     <li>Architected <a href="https://echo.tphinfra.com" target="_blank" rel="noopener">Echo</a> and its MCP server: 440+ models from 88+ vendors</li>
-                    <li>Built Scribe for Narayana Health and voice moderation for Gameberry Labs' Ludo Star</li>
+                    <li>Built Scribe for <a href="https://www.narayanahealth.org/" target="_blank" rel="noopener">Narayana Health</a> and voice moderation for Gameberry Labs' Ludo Star</li>
                     <li>Cut ANSR Global's voice cost by ~75% with a cascading system</li>
                     <li>Shipped production voice agents for healthcare intake and AI interviewing</li>
                 </ul>
@@ -919,12 +943,25 @@
   new IntersectionObserver(function(es){ on = es[0].isIntersecting; clearTimeout(t); if (on) tick(); }).observe(el);
 })();
 
-/* Scribe card: the session clock ticks while it's on screen. */
+/* Scribe card: the clock ticks and the voice being heard moves around the room. */
 (function(){
   var el = document.getElementById('scribeTime'); if (!el) return;
+  var card = el.closest('.scribe-art');
+  var people = card.querySelectorAll('.sc-p'), lines = card.querySelectorAll('.sc-line');
+  var order = ['1','3','2','4','1','2','3','4'], k = 0;
+  function speak(id){
+    people.forEach(function(p){ p.classList.toggle('on', p.dataset.s === id); });
+    lines.forEach(function(l){ l.classList.toggle('on', l.dataset.s === id); });
+  }
+  speak('1');
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var sec = 24 * 60 + 17, t = null, on = false;
-  function tick(){ if (!on) return; sec++; el.textContent = Math.floor(sec / 60) + ':' + ('0' + sec % 60).slice(-2); t = setTimeout(tick, 1000); }
+  var sec = 24 * 60 + 17, t = null, on = false, beat = 0;
+  function tick(){
+    if (!on) return;
+    sec++; el.textContent = Math.floor(sec / 60) + ':' + ('0' + sec % 60).slice(-2);
+    if (++beat % 2 === 0) speak(order[++k % order.length]);
+    t = setTimeout(tick, 1000);
+  }
   new IntersectionObserver(function(es){ on = es[0].isIntersecting; clearTimeout(t); if (on) t = setTimeout(tick, 1000); }).observe(el);
 })();
 
